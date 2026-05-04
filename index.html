@@ -1,1 +1,2165 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sanitopia — Building dignity, one toilet at a time</title>
+<meta name="description" content="Sanitopia is a Community Interest Company building safe, clean sanitation across Africa. Goal: 10,000 projects by 2035." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,200..900,0..100&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --paper: #F1EBE0;
+  --paper-2: #E8DECF;
+  --soft: #FAF6EE;
+  --ink: #161513;
+  --ink-2: #3A3530;
+  --ink-3: #6B6258;
+  --clay: #B5491F;
+  --clay-dark: #8B3614;
+  --forest: #2D4A3E;
+  --forest-dark: #1F3329;
+  --gold: #D9A441;
+  --line: rgba(22, 21, 19, 0.12);
+  --line-strong: rgba(22, 21, 19, 0.22);
+  --shadow-soft: 0 1px 2px rgba(22,21,19,0.04), 0 8px 24px rgba(22,21,19,0.06);
+  --shadow-lift: 0 4px 12px rgba(22,21,19,0.08), 0 24px 60px rgba(22,21,19,0.12);
+  --display: "Fraunces", "Times New Roman", serif;
+  --sans: "Inter Tight", system-ui, sans-serif;
+  --container: 1240px;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+h1 { font-size: clamp(2.5rem, 6.5vw, 5.4rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.6rem); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+h4 { font-size: 1.25rem; line-height: 1.2; }
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--clay);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--clay);
+}
+em, .ital { font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 100; }
+.serif { font-family: var(--display); }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
+section { position: relative; z-index: 2; }
+
+/* ============ NAV ============ */
+.topbar {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 50;
+}
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 1.5rem;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.topbar a:hover { color: var(--gold); }
+.topbar-socials { display: flex; gap: 1rem; }
+.topbar-socials a { opacity: 0.85; transition: opacity 0.2s; }
+.topbar-socials a:hover { opacity: 1; }
+
+header.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(241, 235, 224, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: var(--container);
+  margin: 0 auto;
+  gap: 2rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.brand-mark {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--clay);
+  display: grid;
+  place-items: center;
+  color: var(--paper);
+  font-weight: 700;
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0;
+  position: relative;
+}
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--clay);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  list-style: none;
+}
+.nav-links > li { position: relative; }
+.nav-links a, .nav-links button.menu-trigger {
+  padding: 0.55rem 0.85rem;
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: var(--radius);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover, .nav-links button.menu-trigger:hover,
+.nav-links a.active { color: var(--clay); }
+.nav-links a.active { background: rgba(181, 73, 31, 0.08); }
+.nav-links .caret { font-size: 0.7rem; opacity: 0.6; }
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  min-width: 230px;
+  padding: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+  box-shadow: var(--shadow-lift);
+  margin-top: 0.4rem;
+}
+.nav-links li:hover > .dropdown,
+.nav-links li:focus-within > .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown a {
+  display: block;
+  padding: 0.55rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+.dropdown a:hover { background: var(--paper-2); color: var(--clay); }
+
+.btn-donate {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s, background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-donate::after {
+  content: "→";
+  transition: transform 0.2s;
+}
+.btn-donate:hover { background: var(--clay); transform: translateY(-1px); }
+.btn-donate:hover::after { transform: translateX(3px); }
+
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  align-items: center;
+  justify-content: center;
+}
+.menu-toggle span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--ink);
+  position: relative;
+  transition: transform 0.2s;
+}
+.menu-toggle span::before, .menu-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px; height: 2px;
+  background: var(--ink);
+  transition: transform 0.2s;
+}
+.menu-toggle span::before { top: -6px; }
+.menu-toggle span::after { top: 6px; }
+.menu-toggle.open span { background: transparent; }
+.menu-toggle.open span::before { top: 0; transform: rotate(45deg); }
+.menu-toggle.open span::after { top: 0; transform: rotate(-45deg); }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  z-index: 30;
+  padding: 6rem 1.5rem 2rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu .group { border-bottom: 1px solid var(--line); padding: 1rem 0; }
+.mobile-menu .group > a, .mobile-menu .group > button.acc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: var(--display);
+  font-size: 1.7rem;
+  letter-spacing: -0.02em;
+  padding: 0.4rem 0;
+}
+.mobile-menu .group .sub { display: none; padding: 0.5rem 0 0 0; flex-direction: column; gap: 0.5rem; }
+.mobile-menu .group.open .sub { display: flex; }
+.mobile-menu .sub a { padding: 0.4rem 0; color: var(--ink-2); font-size: 1rem; }
+.mobile-menu .donate-mobile {
+  margin-top: 2rem;
+  display: block;
+  text-align: center;
+  background: var(--clay);
+  color: var(--paper);
+  padding: 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* ============ COMMON ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 999px;
+  transition: all 0.25s;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--clay); color: var(--paper); }
+.btn-primary:hover { background: var(--clay-dark); transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+.btn::after { content: "→"; transition: transform 0.2s; }
+.btn:hover::after { transform: translateX(3px); }
+
+.section { padding: 6rem 0; }
+.section-tight { padding: 4rem 0; }
+
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.in { opacity: 1; transform: translateY(0); }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 4rem 0 5rem;
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 6.2vw, 5.2rem);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.hero h1 .accent {
+  font-style: italic;
+  color: var(--clay);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.hero-lede {
+  font-size: 1.15rem;
+  color: var(--ink-2);
+  margin: 1.8rem 0 2.2rem;
+  max-width: 36rem;
+  line-height: 1.55;
+}
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-collage {
+  position: relative;
+  aspect-ratio: 4/5;
+}
+.hero-collage img {
+  position: absolute;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: var(--shadow-lift);
+}
+.hero-collage .img-1 {
+  width: 78%; height: 70%;
+  top: 0; right: 0;
+  z-index: 2;
+}
+.hero-collage .img-2 {
+  width: 58%; height: 50%;
+  bottom: 0; left: 0;
+  z-index: 3;
+  border: 6px solid var(--paper);
+}
+.hero-collage .badge {
+  position: absolute;
+  top: 8%;
+  left: -2%;
+  z-index: 4;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 1rem 1.2rem;
+  border-radius: 50%;
+  width: 130px; height: 130px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  line-height: 1.1;
+  transform: rotate(-8deg);
+  box-shadow: var(--shadow-soft);
+}
+.hero-collage .badge strong {
+  display: block;
+  font-size: 1.7rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hero-marquee {
+  margin-top: 4rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 35s linear infinite;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  font-style: italic;
+  color: var(--ink-3);
+}
+.marquee-track span { display: inline-flex; align-items: center; gap: 4rem; }
+.marquee-track span::after { content: "✦"; color: var(--clay); font-style: normal; }
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ============ STATS ============ */
+.stats {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.stat-item .num {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1;
+  color: var(--gold);
+  font-variation-settings: "opsz" 144;
+}
+.stat-item .num small {
+  font-size: 0.5em;
+  color: var(--paper);
+  margin-left: 0.2rem;
+}
+.stat-item .label {
+  margin-top: 0.8rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: rgba(241, 235, 224, 0.7);
+  line-height: 1.4;
+}
+
+/* ============ PURPOSE / SDG ============ */
+.purpose {
+  padding: 7rem 0;
+  background: var(--soft);
+}
+.purpose-head {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+.purpose-head p { color: var(--ink-2); font-size: 1.1rem; }
+
+.sdg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.sdg-card {
+  background: var(--paper);
+  padding: 2.4rem 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sdg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.sdg-card .num {
+  font-family: var(--display);
+  font-size: 5rem;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-style: italic;
+  color: var(--clay);
+  opacity: 0.18;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  pointer-events: none;
+}
+.sdg-card.green { background: var(--forest); color: var(--paper); }
+.sdg-card.green .num { color: var(--gold); opacity: 0.3; }
+.sdg-card .icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--paper-2);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+.sdg-card.green .icon { background: rgba(217,164,65,0.18); }
+.sdg-card h3 { margin-bottom: 0.6rem; }
+.sdg-card p { font-size: 0.95rem; color: var(--ink-3); }
+.sdg-card.green p { color: rgba(241,235,224,0.75); }
+
+/* ============ STORY / EDITORIAL ============ */
+.editorial {
+  padding: 8rem 0;
+}
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: center;
+}
+.editorial-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.editorial-image img { width: 100%; height: 100%; object-fit: cover; }
+.editorial-image .tag {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: var(--paper);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.editorial h2 { margin-bottom: 1.5rem; }
+.editorial p { color: var(--ink-2); margin-bottom: 1.2rem; }
+.editorial p.lede { font-size: 1.15rem; color: var(--ink); }
+
+/* ============ FOUNDER QUOTE ============ */
+.quote-block {
+  padding: 8rem 0;
+  background: var(--forest);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.quote-block::before {
+  content: "\201C";
+  position: absolute;
+  font-family: var(--display);
+  font-size: 30rem;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.12;
+  top: -3rem;
+  left: -2rem;
+  font-variation-settings: "opsz" 144;
+}
+.quote-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+.quote-text {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  line-height: 1.25;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.quote-attr {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.quote-attr-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  color: var(--ink);
+}
+.quote-attr-name { font-weight: 600; font-size: 1rem; }
+.quote-attr-title { font-size: 0.85rem; color: rgba(241,235,224,0.7); }
+
+/* ============ PROJECT FEATURE ============ */
+.feature {
+  padding: 7rem 0;
+}
+.feature-card {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+.feature-img { aspect-ratio: 4/3; overflow: hidden; }
+.feature-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.feature-card:hover .feature-img img { transform: scale(1.04); }
+.feature-content { padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+.feature-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+.feature-meta .dot { color: var(--clay); }
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem 0;
+}
+.mini-stat .n { font-family: var(--display); font-size: 1.7rem; color: var(--clay); }
+.mini-stat .l { font-size: 0.78rem; color: var(--ink-3); }
+
+/* ============ CTA ============ */
+.cta-strip {
+  padding: 6rem 0;
+  background: var(--clay);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.cta-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 30%, rgba(0,0,0,0.1) 0%, transparent 40%);
+}
+.cta-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+.cta-inner h2 { color: var(--paper); }
+.cta-inner p { color: rgba(241,235,224,0.85); margin-top: 1rem; max-width: 32rem; }
+.cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+.cta-actions .btn-primary { background: var(--ink); }
+.cta-actions .btn-primary:hover { background: var(--paper); color: var(--ink); }
+.cta-actions .btn-secondary { color: var(--paper); border-color: var(--paper); }
+.cta-actions .btn-secondary:hover { background: var(--paper); color: var(--clay); }
+
+/* ============ FOOTER ============ */
+footer.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 0 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+.footer-grid h4 {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  color: var(--gold);
+}
+.footer-grid ul { list-style: none; }
+.footer-grid li { margin-bottom: 0.7rem; }
+.footer-grid a { color: rgba(241,235,224,0.75); transition: color 0.2s; font-size: 0.95rem; }
+.footer-grid a:hover { color: var(--paper); }
+.footer-brand p { color: rgba(241,235,224,0.7); font-size: 0.95rem; margin-top: 1rem; max-width: 22rem; }
+.footer-bar {
+  border-top: 1px solid rgba(241,235,224,0.15);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.84rem;
+  color: rgba(241,235,224,0.55);
+}
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-socials a {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(241,235,224,0.25);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+.footer-socials a:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+/* ============ PAGE HEADER ============ */
+.page-head {
+  padding: 5rem 0 4rem;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.page-head .crumb {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+.page-head h1 {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  max-width: 18ch;
+}
+.page-head .lede {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  color: var(--ink-2);
+  max-width: 36rem;
+}
+
+/* ============ PROSE ============ */
+.prose { max-width: 720px; margin: 0 auto; }
+.prose p { margin-bottom: 1.4rem; color: var(--ink-2); font-size: 1.05rem; line-height: 1.7; }
+.prose p:first-of-type::first-letter {
+  font-family: var(--display);
+  font-size: 4.5rem;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-style: italic;
+  float: left;
+  line-height: 0.85;
+  margin: 0.4rem 0.6rem 0 0;
+  color: var(--clay);
+}
+.prose h2, .prose h3 { margin: 3rem 0 1rem; }
+.prose ul { margin: 1rem 0 2rem 1.2rem; color: var(--ink-2); }
+.prose ul li { margin-bottom: 0.6rem; }
+.prose blockquote {
+  border-left: 3px solid var(--clay);
+  padding: 0.5rem 0 0.5rem 1.4rem;
+  margin: 2rem 0;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  color: var(--ink);
+}
+
+/* ============ TIMELINE / GALLERY GRID ============ */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.timeline-stage {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+.timeline-stage-meta { position: sticky; top: 6rem; }
+.timeline-stage-meta .step {
+  font-family: var(--display);
+  font-size: 4rem;
+  font-style: italic;
+  color: var(--clay);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.timeline-stage-meta h3 { margin-bottom: 0.6rem; }
+.timeline-stage-meta p { font-size: 0.95rem; color: var(--ink-3); }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.6rem;
+}
+.photo-grid .photo {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--paper-2);
+}
+.photo-grid .photo.tall { aspect-ratio: 3/4; }
+.photo-grid .photo.wide { grid-column: span 2; aspect-ratio: 16/9; }
+.photo-grid .photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.photo-grid .photo:hover img { transform: scale(1.05); }
+
+/* ============ TEAM / VALUES CARDS ============ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.team-card {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.team-card:hover { transform: translateY(-4px); }
+.team-card .photo {
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--paper-2), var(--clay));
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 4rem;
+  color: var(--paper);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-style: italic;
+}
+.team-card .info { padding: 1.5rem; }
+.team-card .name { font-family: var(--display); font-size: 1.4rem; }
+.team-card .role { font-size: 0.85rem; color: var(--ink-3); margin-top: 0.3rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.value-card {
+  background: var(--soft);
+  padding: 2.5rem 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  position: relative;
+  transition: all 0.3s;
+}
+.value-card:hover { background: var(--ink); color: var(--paper); transform: translateY(-3px); }
+.value-card:hover h3 { color: var(--gold); }
+.value-card .num {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--clay);
+  margin-bottom: 1.5rem;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.value-card h3 { margin-bottom: 0.8rem; transition: color 0.3s; }
+.value-card p { font-size: 0.95rem; color: var(--ink-3); transition: color 0.3s; }
+.value-card:hover p { color: rgba(241,235,224,0.75); }
+
+/* ============ BOOK ============ */
+.book-section {
+  padding: 7rem 0;
+  background: var(--paper-2);
+}
+.book-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+}
+.book-cover {
+  aspect-ratio: 2/3;
+  background: linear-gradient(160deg, var(--clay) 0%, var(--clay-dark) 60%, var(--ink) 100%);
+  border-radius: 4px;
+  position: relative;
+  box-shadow: var(--shadow-lift);
+  padding: 3rem 2rem;
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: rotate(-2deg);
+  transition: transform 0.4s;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.book-cover:hover { transform: rotate(0); }
+.book-cover::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 14px;
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+}
+.book-cover .small { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+.book-cover h3 {
+  font-size: 2rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  line-height: 1;
+}
+.book-cover .author { font-size: 0.85rem; opacity: 0.8; }
+
+/* ============ DONATE ============ */
+.donate-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 3rem 0;
+}
+.tier {
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: var(--soft);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.tier:hover, .tier.featured { border-color: var(--clay); background: var(--paper); transform: translateY(-3px); }
+.tier .amount { font-family: var(--display); font-size: 2.5rem; font-variation-settings: "opsz" 144; }
+.tier .desc { font-size: 0.88rem; color: var(--ink-3); margin-top: 0.8rem; }
+.tier.featured { background: var(--clay); color: var(--paper); border-color: var(--clay); }
+.tier.featured .desc { color: rgba(241,235,224,0.85); }
+.tier .badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  background: var(--gold);
+  color: var(--ink);
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+/* ============ NEWS CARDS ============ */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.news-card {
+  background: var(--soft);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.news-card .img { aspect-ratio: 16/10; overflow: hidden; }
+.news-card .img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.news-card:hover .img img { transform: scale(1.05); }
+.news-card .body { padding: 1.8rem; }
+.news-card .date { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.6rem; }
+.news-card h3 { margin-bottom: 0.7rem; font-size: 1.4rem; }
+.news-card p { font-size: 0.92rem; color: var(--ink-3); }
+
+/* ============ CONTACT ============ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+}
+.contact-info p { margin-bottom: 1.5rem; }
+.contact-info .label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.3rem; }
+.contact-info .val { font-family: var(--display); font-size: 1.4rem; }
+
+.form { display: grid; gap: 1rem; }
+.form input, .form textarea, .form select {
+  font: inherit;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+.form input:focus, .form textarea:focus, .form select:focus {
+  outline: none;
+  border-color: var(--clay);
+}
+.form textarea { min-height: 140px; resize: vertical; }
+.form label { font-size: 0.85rem; letter-spacing: 0.04em; color: var(--ink-3); }
+.form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form button[type=submit] {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  justify-self: start;
+  transition: background 0.2s;
+}
+.form button[type=submit]:hover { background: var(--clay); }
+
+/* ============ LIGHTBOX ============ */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(22, 21, 19, 0.95);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 95vw; max-height: 92vh; border-radius: 4px; }
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 980px) {
+  .hero-grid, .editorial-grid, .feature-card, .cta-inner, .purpose-head, .book-grid, .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .feature-content { padding: 2rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1.5rem; }
+  .sdg-grid { grid-template-columns: 1fr; }
+  .timeline-stage { grid-template-columns: 1fr; gap: 1.5rem; }
+  .timeline-stage-meta { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .nav-links { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .topbar-socials { display: none; }
+  .topbar-inner { justify-content: center; font-size: 0.72rem; }
+  .cta-actions { justify-content: flex-start; }
+  .section { padding: 4.5rem 0; }
+  .hero { padding: 2rem 0 3rem; }
+  .quote-block::before { font-size: 18rem; }
+  .hero-collage .badge { width: 100px; height: 100px; font-size: 0.78rem; }
+  .hero-collage .badge strong { font-size: 1.3rem; }
+  body { font-size: 16px; }
+  .editorial { padding: 5rem 0; }
+  .feature, .quote-block, .purpose, .book-section { padding: 5rem 0; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .container { padding: 0 1.2rem; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid .photo.wide { grid-column: span 2; }
+  .form .row { grid-template-columns: 1fr; }
+  .donate-tiers { grid-template-columns: 1fr 1fr; }
+  .hero h1 .accent { display: inline; }
+  .feature-content { padding: 2rem 1.5rem; }
+  .nav-inner { padding: 0.85rem 1.2rem; gap: 1rem; }
+  .brand { font-size: 1.3rem; }
+  .brand-mark { width: 32px; height: 32px; font-size: 0.85rem; }
+  .topbar { display: none; }
+}
+
+/* ============ UTILITY ============ */
+.center { text-align: center; }
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 2rem; } .mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; } .mb-2 { margin-bottom: 2rem; } .mb-3 { margin-bottom: 3rem; }
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 5rem 0;
+}
+.section-head { max-width: 720px; margin: 0 auto 4rem; text-align: center; }
+.section-head .eyebrow { justify-content: center; }
+.section-head .eyebrow::before { display: none; }
+.section-head h2 { margin-top: 1rem; }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>UK Community Interest Company · Registered non-profit in Ghana</span>
+    <div class="topbar-socials">
+      <a href="https://www.facebook.com/profile.php?id=61575746451301" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/sanitopiaprojects/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/sanitopia-projects/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.tiktok.com/@sanitopiaprojects" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#/" class="brand" data-link>
+      <span class="brand-mark">S</span>
+      <span>Sanitopia</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li>
+          <button class="menu-trigger">About <span class="caret">▾</span></button>
+          <div class="dropdown">
+            <a href="#/about" data-link>About Sanitopia</a>
+            <a href="#/founder" data-link>Learn about Richard</a>
+            <a href="#/team" data-link>Our Team</a>
+            <a href="#/purpose" data-link>Our Purpose</a>
+            <a href="#/impact" data-link>Our Impact</a>
+            <a href="#/values" data-link>Our Values</a>
+            <a href="#/book" data-link>Crushed But Not Destroyed</a>
+          </div>
+        </li>
+        <li><a href="#/projects" data-link>Our Projects</a></li>
+        <li>
+          <button class="menu-trigger">Nkonya SHS <span class="caret">▾</span></button>
+          <div class="dropdown">
+            <a href="#/nkonya" data-link>The Pilot Project</a>
+            <a href="#/gallery" data-link>Gallery</a>
+          </div>
+        </li>
+        <li><a href="#/news" data-link>News</a></li>
+        <li><a href="#/contact" data-link>Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#/donate" data-link class="btn-donate">Donate Now</a>
+    <button class="menu-toggle" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<aside class="mobile-menu" id="mobileMenu">
+  <div class="group">
+    <button class="acc">About <span>+</span></button>
+    <div class="sub">
+      <a href="#/about" data-link>About Sanitopia</a>
+      <a href="#/founder" data-link>Learn about Richard</a>
+      <a href="#/team" data-link>Our Team</a>
+      <a href="#/purpose" data-link>Our Purpose</a>
+      <a href="#/impact" data-link>Our Impact</a>
+      <a href="#/values" data-link>Our Values</a>
+      <a href="#/book" data-link>Crushed But Not Destroyed</a>
+    </div>
+  </div>
+  <div class="group"><a href="#/projects" data-link>Our Projects <span>→</span></a></div>
+  <div class="group">
+    <button class="acc">Nkonya SHS <span>+</span></button>
+    <div class="sub">
+      <a href="#/nkonya" data-link>The Pilot Project</a>
+      <a href="#/gallery" data-link>Gallery</a>
+    </div>
+  </div>
+  <div class="group"><a href="#/news" data-link>News <span>→</span></a></div>
+  <div class="group"><a href="#/contact" data-link>Contact <span>→</span></a></div>
+  <a href="#/donate" data-link class="donate-mobile">Donate Now →</a>
+</aside>
+
+<main id="app"></main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="color: var(--paper)">
+          <span class="brand-mark">S</span>
+          <span>Sanitopia</span>
+        </div>
+        <p>A Community Interest Company building safe, dignified sanitation across Africa. Our mission: 10,000 projects by 2035.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#/" data-link>Home</a></li>
+          <li><a href="#/about" data-link>About</a></li>
+          <li><a href="#/projects" data-link>Our Projects</a></li>
+          <li><a href="#/nkonya" data-link>Nkonya SHS</a></li>
+          <li><a href="#/gallery" data-link>Gallery</a></li>
+          <li><a href="#/news" data-link>News</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#/donate" data-link>Donate</a></li>
+          <li><a href="#/founder" data-link>Founder Story</a></li>
+          <li><a href="#/book" data-link>Get the Book</a></li>
+          <li><a href="#/values" data-link>Our Values</a></li>
+          <li><a href="#/contact" data-link>Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@sanitopiaprojects.org">info@sanitopiaprojects.org</a></li>
+          <li><a href="tel:+443302320143">+44 330 232 0143</a></li>
+        </ul>
+        <h4 style="margin-top: 2rem">Follow</h4>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/profile.php?id=61575746451301" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/sanitopiaprojects/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+          <a href="https://www.linkedin.com/company/sanitopia-projects/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://www.tiktok.com/@sanitopiaprojects" target="_blank" rel="noopener" aria-label="TikTok">tt</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div>© 2025 Sanitopia. All rights reserved.</div>
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="#/privacy" data-link>Privacy</a>
+        <a href="#/terms" data-link>Terms</a>
+        <a href="#/cookies" data-link>Cookies</a>
+        <a href="#/slavery" data-link>Anti-Modern Slavery</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">×</button>
+  <img id="lightbox-img" alt="" />
+</div>
+
+<script>
+// ============== IMAGES ==============
+const IMG = {
+  hero: "https://sanitopiaprojects.org/wp-content/uploads/2025/08/Magbe-shot-it-204-of-276.jpg",
+  award: "https://sanitopiaprojects.org/wp-content/uploads/2024/12/Sanitopia-award-image1.jpg",
+  solar: "https://sanitopiaprojects.org/wp-content/uploads/2024/12/Solar-Panel.jpg",
+  borehole: "https://sanitopiaprojects.org/wp-content/uploads/2024/12/Mechanised-borehole.jpg",
+  septic: "https://sanitopiaprojects.org/wp-content/uploads/2024/12/Septic-Tank.jpg",
+  layout: "https://sanitopiaprojects.org/wp-content/uploads/2024/12/Layout.jpg",
+  before: [
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-1.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-2.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-3.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-4.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-5.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-6.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-7.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Toilets-Before-Construction-8.jpeg",
+  ],
+  breaking: [
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-1.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-2.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-3.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-4.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-5.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-6.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Breaking-the-Ground-7.jpeg",
+  ],
+  midway: [
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-1.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-2.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-3.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-4.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-5.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-6.jpeg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/16-Days-Into-Construction-7.jpeg",
+  ],
+  completion: [
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-1.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-2.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-3.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-4.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-5.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-6.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-7.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-8.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-9.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-10.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-11.jpg",
+    "https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-12.jpg",
+  ],
+};
+
+// ============== TEMPLATES ==============
+const T = {};
+
+T.home = () => `
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <span class="eyebrow">A community-led mission</span>
+        <h1 style="margin-top: 1.5rem">Building <span class="accent">dignity,</span><br>one toilet at a time.</h1>
+        <p class="hero-lede">Sanitopia is a Community Interest Company creating safe and clean sanitation across Africa. Our pledge: complete 10,000 projects by 2035 — starting with the schools that shaped us.</p>
+        <div class="hero-cta-row">
+          <a href="#/donate" data-link class="btn btn-primary">Support a project</a>
+          <a href="#/nkonya" data-link class="btn btn-secondary">See our pilot</a>
+        </div>
+      </div>
+      <div class="hero-collage fade-up" style="transition-delay: 0.15s">
+        <img class="img-1" src="${IMG.hero}" alt="Children at Nkonya Senior High School" loading="lazy" />
+        <img class="img-2" src="${IMG.completion[0]}" alt="Completed washroom facility" loading="lazy" />
+        <div class="badge"><div><strong>10K</strong>by 2035</div></div>
+      </div>
+    </div>
+    <div class="hero-marquee">
+      <div class="marquee-track">
+        <span>Clean water</span><span>Restored dignity</span><span>Safer schools</span><span>Healthier communities</span><span>Gender equality</span>
+        <span>Clean water</span><span>Restored dignity</span><span>Safer schools</span><span>Healthier communities</span><span>Gender equality</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up"><div class="num">10,000<small>+</small></div><div class="label">Sanitation projects targeted by 2035</div></div>
+      <div class="stat-item fade-up" style="transition-delay: 0.1s"><div class="num">120<small>days</small></div><div class="label">From breaking ground to completion at our pilot</div></div>
+      <div class="stat-item fade-up" style="transition-delay: 0.2s"><div class="num">37<small>units</small></div><div class="label">12-seater + 25-unit washrooms built at Nkonya SHS</div></div>
+      <div class="stat-item fade-up" style="transition-delay: 0.3s"><div class="num">3<small>SDGs</small></div><div class="label">Aligned with UN Goals 3, 5 and 6</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="purpose">
+  <div class="container">
+    <div class="purpose-head fade-up">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2 style="margin-top: 1.2rem">Where dignity meets clean water.</h2>
+      </div>
+      <p>Sanitopia is a UK-registered Community Interest Company and a registered non-profit in Ghana. We believe access to safe, hygienic facilities is a fundamental right — not a privilege. Every project we build is a quiet promise to a community: <em>you matter.</em></p>
+    </div>
+    <div class="sdg-grid">
+      <div class="sdg-card fade-up"><div class="num">03</div><div class="icon">⚕</div><h3>Good Health & Well-being</h3><p>Reducing the spread of preventable disease through safe, hygienic infrastructure.</p></div>
+      <div class="sdg-card green fade-up" style="transition-delay: 0.1s"><div class="num">05</div><div class="icon">⚥</div><h3>Gender Equality</h3><p>Private, dignified facilities so girls don't miss school during menstruation.</p></div>
+      <div class="sdg-card fade-up" style="transition-delay: 0.2s"><div class="num">06</div><div class="icon">⌬</div><h3>Clean Water & Sanitation</h3><p>Boreholes, handwashing stations and waste systems built to last generations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="editorial">
+  <div class="container">
+    <div class="editorial-grid">
+      <div class="editorial-image fade-up">
+        <img src="${IMG.completion[7]}" alt="Founder Richard at the school" loading="lazy" />
+        <div class="tag">Nkonya SHS · Oti Region, Ghana</div>
+      </div>
+      <div class="fade-up" style="transition-delay: 0.1s">
+        <span class="eyebrow">Why this matters</span>
+        <h2 style="margin: 1.2rem 0 1.5rem">Africa's school washrooms are in crisis — we're rewriting the story.</h2>
+        <p class="lede">In schools across the continent, toilets stand abandoned: shattered, locked or never finished. The cost is paid in disease, in lost school days, and in the quiet shame of girls who simply stop showing up.</p>
+        <p>We saw this first-hand at our founders' alma mater. The girls' washroom at Nkonya Senior High School had been unusable for over a decade. So we rebuilt it — properly. And then we promised to do it again, and again, and again.</p>
+        <a href="#/about" data-link class="btn btn-secondary mt-2">Read our full story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-block">
+  <div class="container">
+    <div class="quote-inner fade-up">
+      <p class="quote-text">My vision for Sanitopia is my way of honouring the community that shaped me and my wife. Every toilet built, every safe space created, is a reflection of the care we received — and a promise to pass it forward.</p>
+      <div class="quote-attr">
+        <div class="quote-attr-avatar">R</div>
+        <div>
+          <div class="quote-attr-name">Richard Kojo Acheampong</div>
+          <div class="quote-attr-title">Founder, Sanitopia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Our pilot project</span>
+      <h2>The story of Nkonya Senior High School.</h2>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-img"><img src="${IMG.completion[2]}" alt="Completed Nkonya facility" loading="lazy" /></div>
+      <div class="feature-content">
+        <div class="feature-meta">
+          <span>Oti Region · Ghana</span><span class="dot">●</span><span>Completed 2025</span>
+        </div>
+        <h2>A 12-seater facility — built in 120 days.</h2>
+        <p style="margin-top: 1rem; color: var(--ink-2)">When our founders returned to their alma mater, the girls' washroom had been unusable for over a decade. They built a new 12-seater toilet block, completed an abandoned 25-unit washroom, and added a roofed walkway between them.</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="n">$30K+</div><div class="l">Total invested</div></div>
+          <div class="mini-stat"><div class="n">37</div><div class="l">Toilet units</div></div>
+          <div class="mini-stat"><div class="n">120</div><div class="l">Days to build</div></div>
+        </div>
+        <a href="#/nkonya" data-link class="btn btn-primary" style="align-self: flex-start">See the full project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-up">
+        <span class="eyebrow" style="color: var(--paper)">Help us drive change</span>
+        <h2 style="margin-top: 1rem">One toilet built is one community changed.</h2>
+        <p>Your support funds the materials, the labour and the long-term maintenance that keeps these projects running for generations.</p>
+      </div>
+      <div class="cta-actions fade-up" style="transition-delay: 0.1s">
+        <a href="#/donate" data-link class="btn btn-primary">Donate now</a>
+        <a href="#/contact" data-link class="btn btn-secondary">Partner with us</a>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+T.about = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / Sanitopia</div>
+    <h1 class="fade-up">Driving change, <em>one step</em> at a time.</h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Founded in 2025 — a UK-registered Community Interest Company and a registered non-profit in Ghana. We believe dignity, safety and well-being begin with access to the basics.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="prose fade-up">
+      <p>Sanitopia is on a mission to enhance health and quality of life for disadvantaged communities across Africa. We do this by building healthier futures through community-led Livelihood Development Programs that align with the United Nations Sustainable Development Goals.</p>
+      <p>Access to hygienic sanitation is not just a necessity — it is a fundamental human right. By supporting our work, you invest in the unity, resilience and determination of the communities we serve.</p>
+
+      <h2>The three goals that guide us</h2>
+      <ul>
+        <li><strong>SDG 3 — Good Health & Well-being:</strong> enhancing health services and promoting well-being for all.</li>
+        <li><strong>SDG 5 — Gender Equality:</strong> ensuring equal rights and opportunities, especially for girls and women.</li>
+        <li><strong>SDG 6 — Clean Water & Sanitation:</strong> safe water and adequate sanitation for everyone.</li>
+      </ul>
+
+      <h2>Taking matters into our own hands</h2>
+      <p>In nearly every community across Africa there are remnants of unsuccessful attempts to improve local living conditions — shattered toilets, empty wells, dilapidated school buildings. These have come to symbolise the difficulty of delivering effective development. Our answer is accountability: comprehensive gate reviews, robust financial management and meticulous planning.</p>
+
+      <p>But tools alone aren't enough. People engage in development for personal as well as collective reasons. The evolving global and local context compels under-resourced communities to take proactive steps toward improving their quality of life — and we walk alongside them as a partner, not a gatekeeper.</p>
+
+      <h2>Supporting sustainability</h2>
+      <p>For infrastructure to be truly sustainable, three things must be in place: good governance, meaningful civil-society participation, and genuine accountability. Sanitopia has the expertise — from board level to frontline — to make all three real.</p>
+
+      <blockquote>We are more than builders. We are changemakers, dedicated to transforming lives through improved sanitation. Join us.</blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="purpose">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">What we focus on</span>
+      <h2>Three pillars, one promise.</h2>
+    </div>
+    <div class="sdg-grid">
+      <div class="sdg-card fade-up"><div class="num">01</div><div class="icon">♥</div><h3>Healthier Communities</h3><p>Access to hygienic facilities reduces disease and improves overall community health.</p></div>
+      <div class="sdg-card green fade-up" style="transition-delay: 0.1s"><div class="num">02</div><div class="icon">✦</div><h3>Restored Dignity</h3><p>Safe, private spaces meet a fundamental human need with the respect it deserves.</p></div>
+      <div class="sdg-card fade-up" style="transition-delay: 0.2s"><div class="num">03</div><div class="icon">∞</div><h3>Sustainable Impact</h3><p>Long-term solutions designed to benefit communities for generations to come.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-up"><h2>Ready to be part of the story?</h2><p>Every contribution moves us closer to 10,000 projects.</p></div>
+      <div class="cta-actions fade-up"><a href="#/donate" data-link class="btn btn-primary">Donate</a><a href="#/founder" data-link class="btn btn-secondary">Meet the founder</a></div>
+    </div>
+  </div>
+</section>
+`;
+
+T.founder = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / The Founder</div>
+    <h1 class="fade-up"><em>Crushed</em><br>but not destroyed.</h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">A lawyer, entrepreneur, author and philanthropist. Born in Ghana, shaped in the UK, and rebuilding the place that raised him.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="editorial-grid" style="grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: flex-start">
+      <div class="editorial-image fade-up" style="aspect-ratio: 3/4; position: sticky; top: 6rem">
+        <img src="${IMG.completion[8]}" alt="Richard Kojo Acheampong" loading="lazy" />
+        <div class="tag">Founder · Sanitopia</div>
+      </div>
+      <div class="fade-up" style="transition-delay: 0.1s">
+        <span class="eyebrow">Richard Kojo Acheampong</span>
+        <h2 style="margin: 1rem 0 2rem">From a Ghanaian village to the courts of England — and back again.</h2>
+        <p style="color: var(--ink-2); margin-bottom: 1.4rem">Originally from Ghana, Richard relocated to the UK in 1998. Shortly after he arrived, a severe car accident resulted in the amputation of one of his feet. The trauma tested his physical resilience — and the difficult immigration aftermath, which included repeated threats of deportation while still hospitalised, tested everything else.</p>
+        <p style="color: var(--ink-2); margin-bottom: 1.4rem">Unable to find conventional employment, he started his first business in 2002. Two decades later, his ventures have created jobs for hundreds of people in the UK economy.</p>
+        <p style="color: var(--ink-2); margin-bottom: 1.4rem">He went back to school. In 2016 he qualified as a lawyer — dual-qualified as a Lawyer of the Supreme Court of Ghana and a Solicitor of the Senior Courts of England and Wales. He turned his story into a memoir, <em>Crushed But Not Destroyed</em>, and used the proceeds to fund Sanitopia's first project.</p>
+
+        <blockquote style="border-left: 3px solid var(--clay); padding: 0.5rem 0 0.5rem 1.4rem; margin: 2rem 0; font-family: var(--display); font-size: 1.4rem; font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 80; color: var(--ink)">We all must give back to our communities. That belief is the foundation of everything Sanitopia builds.</blockquote>
+
+        <h3 style="margin: 2.5rem 0 1rem">A personal commitment</h3>
+        <p style="color: var(--ink-2); margin-bottom: 1.4rem">Richard and his wife, Joan Asare-Acheampong, are both alumni of Nkonya Senior High School. Their pilot project — a 12-seater girls' washroom plus the completion of a long-abandoned 25-unit facility — was funded out of personal savings and book royalties. Originally budgeted at GHS 210,000 (~$15,000), the final cost reached GHS 420,000 (over $30,000) once additional works were folded in. They delivered it in 120 days.</p>
+        <p style="color: var(--ink-2); margin-bottom: 1.4rem">Richard's personal donation of <strong>£20,000</strong> ($24,863) launched Sanitopia, on top of the £24,132 ($30,000) already invested in the pilot. That early funding secured legal counsel, expert advisors, vital resources and a dedicated team.</p>
+
+        <a href="#/book" data-link class="btn btn-primary mt-2">Get the book</a>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+T.team = () => {
+  const members = [
+    { initial: "R", name: "Richard K. Acheampong", role: "Founder & Director" },
+    { initial: "J", name: "Joan Asare-Acheampong", role: "Co-Founder & Programmes" },
+    { initial: "A", name: "Advisory Board", role: "Strategy & Governance" },
+    { initial: "G", name: "Ghana Operations", role: "Project Delivery" },
+    { initial: "L", name: "Legal Counsel", role: "Compliance & CIC Affairs" },
+    { initial: "C", name: "Community Liaison", role: "Stakeholder Engagement" },
+  ];
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / Our Team</div>
+    <h1 class="fade-up">The people behind <em>the promise.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">A small, distributed team of builders, lawyers, designers and community organisers — bound together by the belief that everyone deserves a clean, safe place to go.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card-grid">
+      ${members.map((m, i) => `
+        <div class="team-card fade-up" style="transition-delay: ${i * 0.05}s">
+          <div class="photo">${m.initial}</div>
+          <div class="info"><div class="name">${m.name}</div><div class="role">${m.role}</div></div>
+        </div>
+      `).join("")}
+    </div>
+    <div class="center mt-3 fade-up">
+      <p style="color: var(--ink-3); max-width: 36rem; margin: 0 auto 1.5rem">We're growing. If you'd like to contribute your skills — engineering, finance, fieldwork, fundraising — we'd love to hear from you.</p>
+      <a href="#/contact" data-link class="btn btn-primary">Get in touch</a>
+    </div>
+  </div>
+</section>
+`;
+};
+
+T.purpose = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / Our Purpose</div>
+    <h1 class="fade-up">Closing the <em>sanitation gap.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Billions of people still lack access to safe toilets and hygiene facilities. We exist to change that — community by community, school by school.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="prose fade-up">
+      <p>Around the world, the absence of basic sanitation contributes to preventable disease, environmental damage and entrenched inequality. By building infrastructure and creating safe community spaces, we help close that gap — but our purpose runs deeper than concrete.</p>
+      <h2>The African context</h2>
+      <p>Many countries on the continent lack adequate school sanitation due to limited investment in infrastructure. Public schools bear the brunt — especially rural ones. The result is a cycle: poor hygiene leads to outbreaks of cholera, diarrhoea, typhoid, hepatitis A and polio, which spread quickly in close school environments.</p>
+      <h2>Why girls are most affected</h2>
+      <ul>
+        <li>During menstruation, girls without privacy or proper facilities often skip school entirely.</li>
+        <li>Long-term, this absence widens gender gaps in education outcomes.</li>
+        <li>Teachers and staff also lose productivity to illness from unhygienic conditions.</li>
+      </ul>
+      <h2>What it takes to fix it</h2>
+      <p>Real change requires four things working together: adequate facilities, clean water for handwashing, hygiene education, and reliable menstrual hygiene management resources. Without all four, the cycle continues.</p>
+      <blockquote>Our purpose is to build the infrastructure — and then stay long enough to make sure it lasts.</blockquote>
+    </div>
+  </div>
+</section>
+`;
+
+T.impact = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / Our Impact</div>
+    <h1 class="fade-up">Measured in lives, <em>not bricks.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">We track impact by the children who can stay in school, the diseases that don't spread, and the dignity that returns.</p>
+  </div>
+</section>
+
+<section class="stats" style="background: var(--forest)">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up"><div class="num">37<small>units</small></div><div class="label">Toilet units delivered at the pilot</div></div>
+      <div class="stat-item fade-up" style="transition-delay: 0.1s"><div class="num">$30K<small>+</small></div><div class="label">Personally invested by founders before launch</div></div>
+      <div class="stat-item fade-up" style="transition-delay: 0.2s"><div class="num">120<small>days</small></div><div class="label">From breaking ground to completion</div></div>
+      <div class="stat-item fade-up" style="transition-delay: 0.3s"><div class="num">10K<small>by 2035</small></div><div class="label">Projects targeted across Africa</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Stories of change</span>
+      <h2>Behind every number, a name.</h2>
+    </div>
+    <div class="card-grid">
+      <div class="news-card fade-up">
+        <div class="img"><img src="${IMG.completion[3]}" alt="Commissioning" loading="lazy" /></div>
+        <div class="body">
+          <div class="date">Pilot · Nkonya SHS</div>
+          <h3>The girls' lavatory, restored.</h3>
+          <p>A facility that had been out of use for over a decade is now a clean, well-lit 12-seater serving the girls' dormitory.</p>
+        </div>
+      </div>
+      <div class="news-card fade-up" style="transition-delay: 0.1s">
+        <div class="img"><img src="${IMG.completion[5]}" alt="Walkway" loading="lazy" /></div>
+        <div class="body">
+          <div class="date">Design · All-weather access</div>
+          <h3>A roofed walkway between blocks.</h3>
+          <p>Not part of the original plan — added when we realised heavy rains were keeping students from the facility.</p>
+        </div>
+      </div>
+      <div class="news-card fade-up" style="transition-delay: 0.2s">
+        <div class="img"><img src="${IMG.completion[7]}" alt="Community" loading="lazy" /></div>
+        <div class="body">
+          <div class="date">Community · Ownership</div>
+          <h3>Maintenance, by and for the community.</h3>
+          <p>Local engagement at every stage — so the building isn't ours, it's theirs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-up"><h2>The pilot is just the start.</h2><p>Help us scale to ten thousand.</p></div>
+      <div class="cta-actions fade-up"><a href="#/donate" data-link class="btn btn-primary">Donate</a><a href="#/projects" data-link class="btn btn-secondary">See projects</a></div>
+    </div>
+  </div>
+</section>
+`;
+
+T.values = () => {
+  const values = [
+    { n: "i.", t: "Dignity first", d: "Every facility is designed so that the people who use it feel safe, private and respected." },
+    { n: "ii.", t: "Radical accountability", d: "Comprehensive gate reviews, transparent reporting and rigorous financial management on every project." },
+    { n: "iii.", t: "Community-led", d: "We build with communities, not for them. Local participation is non-negotiable." },
+    { n: "iv.", t: "Sustainability", d: "Solar power, mechanised boreholes and waste-to-energy systems where the load supports it." },
+    { n: "v.", t: "Long horizon", d: "Our timeline is generations, not quarters. We design for buildings that outlast us." },
+    { n: "vi.", t: "Honesty in failure", d: "When something doesn't work, we say so — and we go back and fix it." },
+  ];
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / Our Values</div>
+    <h1 class="fade-up">Six principles. <em>Zero exceptions.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">These aren't statements on a wall. They're the questions we ask before, during and after every project.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card-grid">
+      ${values.map((v, i) => `
+        <div class="value-card fade-up" style="transition-delay: ${i * 0.05}s">
+          <div class="num">${v.n}</div>
+          <h3>${v.t}</h3>
+          <p>${v.d}</p>
+        </div>
+      `).join("")}
+    </div>
+  </div>
+</section>
+`;
+};
+
+T.book = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">About / Crushed But Not Destroyed</div>
+    <h1 class="fade-up">A memoir that <em>built a movement.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Richard's memoir chronicles his transformation from tragedy to purpose — and royalties from every copy fund Sanitopia's projects.</p>
+  </div>
+</section>
+
+<section class="book-section">
+  <div class="container">
+    <div class="book-grid">
+      <div class="fade-up">
+        <div class="book-cover">
+          <div>
+            <div class="small">A Memoir</div>
+            <h3 style="margin-top: 1rem">Crushed<br>But Not<br><em>Destroyed</em></h3>
+          </div>
+          <div class="author">Richard K. Acheampong</div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay: 0.1s">
+        <span class="eyebrow">The story behind the project</span>
+        <h2 style="margin: 1.2rem 0 1.5rem">When everything fell apart, he started over.</h2>
+        <p style="color: var(--ink-2); margin-bottom: 1.2rem">A car accident. An amputation. Threats of deportation while still in hospital. Years of fighting to find work, then build it from scratch. Richard's memoir is the story of how the human spirit — supported by family, faith and community — can refuse to be defined by what it loses.</p>
+        <p style="color: var(--ink-2); margin-bottom: 2rem">Every copy you buy directly funds Sanitopia projects. The pilot at Nkonya SHS was launched, in part, with proceeds from this book.</p>
+        <a href="#/donate" data-link class="btn btn-primary">Get a copy & support</a>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+T.projects = () => {
+  const projects = [
+    {
+      img: IMG.completion[0],
+      tag: "Pilot · Completed",
+      title: "Nkonya Senior High School",
+      loc: "Oti Region, Ghana",
+      desc: "A 12-seater girls' facility, completion of a 25-unit washroom, and a roofed connecting walkway. $30K+, 120 days, 37 units.",
+      link: "#/nkonya",
+      cta: "View project"
+    },
+    {
+      img: IMG.solar,
+      tag: "In Planning",
+      title: "Solar-powered Sanitation Block — Model 1",
+      loc: "Standard primary & secondary schools",
+      desc: "Our standard model: solar panels, a mechanised borehole, septic tank and a layout designed for under 600 daily users.",
+      link: "#/projects",
+      cta: "Learn about Model 1"
+    },
+    {
+      img: IMG.layout,
+      tag: "In Planning",
+      title: "Waste-to-Energy Block — Model 2",
+      loc: "High-population schools",
+      desc: "Where daily population exceeds 600, the facility captures and reuses waste for kitchen energy and produces nutrient-rich slurry as fertiliser.",
+      link: "#/projects",
+      cta: "Learn about Model 2"
+    },
+  ];
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Our Projects</div>
+    <h1 class="fade-up">Capturing moments <em>of change.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">From a single rebuilt washroom to standardised models that can scale across Ghana and beyond — every project is a chapter in the same story.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    ${projects.map((p, i) => `
+      <div class="feature-card fade-up" style="margin-bottom: 2.5rem; ${i % 2 === 1 ? "grid-template-columns: 1fr 1.1fr; direction: rtl" : ""}">
+        <div class="feature-img" style="direction: ltr"><img src="${p.img}" alt="${p.title}" loading="lazy" /></div>
+        <div class="feature-content" style="direction: ltr">
+          <div class="feature-meta"><span>${p.tag}</span><span class="dot">●</span><span>${p.loc}</span></div>
+          <h2>${p.title}</h2>
+          <p style="margin-top: 1rem; color: var(--ink-2)">${p.desc}</p>
+          <a href="${p.link}" data-link class="btn btn-primary mt-2" style="align-self: flex-start">${p.cta}</a>
+        </div>
+      </div>
+    `).join("")}
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-up"><h2>Sponsor the next project.</h2><p>Whole-project sponsorship, materials, or corporate partnership — let's talk.</p></div>
+      <div class="cta-actions fade-up"><a href="#/donate" data-link class="btn btn-primary">Donate</a><a href="#/contact" data-link class="btn btn-secondary">Partner with us</a></div>
+    </div>
+  </div>
+</section>
+`;
+};
+
+T.nkonya = () => {
+  const stages = [
+    { n: "01", title: "Toilets before construction", desc: "What we walked into. A facility that had been out of use for over a decade.", imgs: IMG.before },
+    { n: "02", title: "Breaking the ground", desc: "Site preparation begins. Local labour, full transparency, every cost documented.", imgs: IMG.breaking },
+    { n: "03", title: "16 days into construction", desc: "Walls rising. The shape of the new facility starts to take form.", imgs: IMG.midway },
+    { n: "04", title: "Completion", desc: "Twelve seats for the girls' dorm. A 25-unit block completed. A roofed walkway between them. Delivered in 120 days.", imgs: IMG.completion },
+  ];
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Projects / Nkonya SHS</div>
+    <h1 class="fade-up">Our pilot project, <em>told in four chapters.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Nkonya Senior High School in the Oti Region, Ghana — the school that shaped our founders, and where Sanitopia began.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="prose fade-up">
+      <h2 style="margin-top: 0">How the concept was conceived</h2>
+      <p>Richard and Joan Acheampong are proud alumni of Nkonya Senior High School (NKOSEC) — the only secondary school in their community during their youth. Returning years later, Richard was disturbed by the state of the girls' washroom: out of use for over a decade, it had deteriorated into a makeshift space that fell well below acceptable hygiene standards.</p>
+      <h2>The problem</h2>
+      <p>The facility was no longer functional as a proper lavatory. It posed real health risks to female students and made an urgent case for intervention. The structure that should have meant safety had become a symbol of neglect.</p>
+      <h2>The solution</h2>
+      <p>A modern 12-seater facility for the girls' dormitory. Completion of an older 25-unit washroom that had been abandoned for years. A roofed walkway between them, so students could move between blocks during heavy rain.</p>
+      <h2>Funding & execution</h2>
+      <p>Original budget: GHS 210,000 (~$15,000). Final cost: GHS 420,000 (over $30,000), driven by rising material costs and additional works identified mid-project — including the 25-unit completion, which was added late but delivered on time. Funding came from Richard's book royalties and personal savings. Despite the cost overrun, the project completed within 120 days as promised.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">The build</span>
+      <h2>Four stages, documented in full.</h2>
+    </div>
+    <div class="timeline">
+      ${stages.map(s => `
+        <div class="timeline-stage fade-up">
+          <div class="timeline-stage-meta">
+            <div class="step">${s.n}</div>
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+          </div>
+          <div class="photo-grid">
+            ${s.imgs.slice(0, 6).map((src, i) => `
+              <div class="photo${i === 0 ? " wide" : ""}" data-lb="${src}">
+                <img src="${src}" alt="${s.title}" loading="lazy" />
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  </div>
+</section>
+
+<section class="purpose">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">New facility design</span>
+      <h2>Two engineered models — for different scales.</h2>
+    </div>
+    <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="news-card fade-up">
+        <div class="img" style="aspect-ratio: 4/3"><img src="${IMG.solar}" alt="Solar panel" loading="lazy" /></div>
+        <div class="body">
+          <div class="date">Model 1 · Standard</div>
+          <h3>Solar-powered, borehole-fed.</h3>
+          <p>For schools under ~600 daily users. Solar panels, a mechanised borehole, a properly engineered septic tank, and a layout designed for student flow.</p>
+        </div>
+      </div>
+      <div class="news-card fade-up" style="transition-delay: 0.1s">
+        <div class="img" style="aspect-ratio: 4/3"><img src="${IMG.layout}" alt="Layout" loading="lazy" /></div>
+        <div class="body">
+          <div class="date">Model 2 · High-volume</div>
+          <h3>Waste-to-energy, slurry-to-fertiliser.</h3>
+          <p>Where daily population exceeds 600, waste is captured and converted into kitchen energy. The leftover nutrient-rich slurry is reused as fertiliser.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-block">
+  <div class="container">
+    <div class="quote-inner fade-up">
+      <p class="quote-text">It started as a personal commitment to give back to the school that shaped us. It became a model we can repeat — anywhere a community needs it.</p>
+      <div class="quote-attr">
+        <div class="quote-attr-avatar">R</div>
+        <div><div class="quote-attr-name">Richard & Joan Acheampong</div><div class="quote-attr-title">Alumni, Nkonya Senior High School</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+};
+
+T.gallery = () => {
+  const all = [...IMG.completion, ...IMG.midway, ...IMG.breaking, ...IMG.before];
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Gallery</div>
+    <h1 class="fade-up">Every image, <em>every chapter.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">From the unusable washroom we found to the finished facility we delivered — the full visual record of the Nkonya SHS pilot.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="photo-grid fade-up">
+      ${all.map((src, i) => {
+        const cls = i % 7 === 0 ? "wide" : (i % 5 === 0 ? "tall" : "");
+        return `<div class="photo ${cls}" data-lb="${src}"><img src="${src}" alt="Project photo ${i+1}" loading="lazy" /></div>`;
+      }).join("")}
+    </div>
+  </div>
+</section>
+`;
+};
+
+T.news = () => {
+  const items = [
+    { date: "2025 · Pilot Launch", title: "Sanitopia officially launches with pilot at Nkonya SHS", img: IMG.completion[2], desc: "Our first project goes live in Ghana's Oti Region — the launchpad for everything that comes next." },
+    { date: "2025 · Founder", title: "Richard publishes Crushed But Not Destroyed", img: IMG.completion[5], desc: "The memoir whose royalties helped fund our pilot project hits shelves." },
+    { date: "2025 · Recognition", title: "Sanitopia receives first community recognition", img: IMG.award, desc: "Recognition from the local district for the impact at Nkonya Senior High School." },
+    { date: "2025 · Models", title: "Two engineered facility models published", img: IMG.layout, desc: "Standard and high-volume designs released — ready for deployment across partner schools." },
+  ];
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">News</div>
+    <h1 class="fade-up">Latest from <em>the field.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Updates from our projects, our partnerships and the communities we work with.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="news-grid">
+      ${items.map((n, i) => `
+        <article class="news-card fade-up" style="transition-delay: ${i * 0.05}s">
+          <div class="img"><img src="${n.img}" alt="${n.title}" loading="lazy" /></div>
+          <div class="body">
+            <div class="date">${n.date}</div>
+            <h3>${n.title}</h3>
+            <p>${n.desc}</p>
+          </div>
+        </article>
+      `).join("")}
+    </div>
+  </div>
+</section>
+`;
+};
+
+T.donate = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Donate</div>
+    <h1 class="fade-up">Build with us. <em>Brick by brick.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Every donation is allocated transparently — materials, local labour, long-term maintenance. Pick a tier or set your own amount.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="donate-tiers fade-up">
+      <div class="tier"><div class="amount">£10</div><div class="desc">Funds handwashing supplies for one classroom for a month.</div></div>
+      <div class="tier"><div class="amount">£25</div><div class="desc">Sponsors hygiene education materials for an entire grade.</div></div>
+      <div class="tier featured"><span class="badge">Most chosen</span><div class="amount">£50</div><div class="desc">Pays for one full month of community-led maintenance.</div></div>
+      <div class="tier"><div class="amount">£100</div><div class="desc">Contributes directly to the build cost of one toilet seat unit.</div></div>
+      <div class="tier"><div class="amount">£500+</div><div class="desc">Become a project partner. We'll invite you to commissioning.</div></div>
+    </div>
+
+    <form class="form fade-up" style="max-width: 640px; margin: 3rem auto 0" onsubmit="event.preventDefault(); alert('Thank you. Your donation flow would continue here. Connect Stripe / GoCardless / Donorbox to your domain to enable.');">
+      <div class="row">
+        <div><label>First name</label><input required type="text" placeholder="Your first name" /></div>
+        <div><label>Last name</label><input required type="text" placeholder="Your last name" /></div>
+      </div>
+      <div><label>Email</label><input required type="email" placeholder="you@example.com" /></div>
+      <div class="row">
+        <div><label>Amount (£)</label><input required type="number" min="1" placeholder="50" /></div>
+        <div><label>Frequency</label><select><option>One-time</option><option>Monthly</option><option>Quarterly</option><option>Annually</option></select></div>
+      </div>
+      <div><label>Message (optional)</label><textarea placeholder="Anything you'd like us to know..."></textarea></div>
+      <button type="submit">Continue to secure payment</button>
+      <p style="font-size: 0.85rem; color: var(--ink-3); margin-top: 0.5rem">Your data is private. We never share donor details. Sanitopia is a UK CIC — donations may be eligible for Gift Aid where applicable.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Other ways to help</span>
+      <h2>You don't have to donate to make a difference.</h2>
+    </div>
+    <div class="card-grid">
+      <div class="value-card fade-up"><div class="num">i.</div><h3>Buy the book</h3><p>Crushed But Not Destroyed — every copy directly funds projects.</p></div>
+      <div class="value-card fade-up" style="transition-delay: 0.1s"><div class="num">ii.</div><h3>Become a partner</h3><p>Corporate sponsorship of a whole project, named after your organisation.</p></div>
+      <div class="value-card fade-up" style="transition-delay: 0.2s"><div class="num">iii.</div><h3>Volunteer skills</h3><p>Engineering, finance, design, fieldwork, fundraising — we welcome it all.</p></div>
+      <div class="value-card fade-up" style="transition-delay: 0.3s"><div class="num">iv.</div><h3>Spread the word</h3><p>Follow us, share our work, tell one person. It compounds faster than you'd think.</p></div>
+    </div>
+  </div>
+</section>
+`;
+
+T.contact = () => `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Contact</div>
+    <h1 class="fade-up">Let's <em>talk.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Press, partnerships, volunteering, or just curiosity — we read every message.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <p><div class="label">Email</div><div class="val"><a href="mailto:info@sanitopiaprojects.org">info@sanitopiaprojects.org</a></div></p>
+        <p><div class="label">Phone</div><div class="val"><a href="tel:+443302320143">+44 330 232 0143</a></div></p>
+        <p><div class="label">Registration</div><div class="val" style="font-size: 1rem; line-height: 1.5">UK Community Interest Company<br>Registered non-profit in Ghana</div></p>
+        <p><div class="label">Follow</div>
+          <div style="display: flex; gap: 0.6rem; margin-top: 0.4rem">
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.facebook.com/profile.php?id=61575746451301" target="_blank" rel="noopener">Facebook</a>
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.instagram.com/sanitopiaprojects/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <div style="display: flex; gap: 0.6rem; margin-top: 0.6rem">
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.linkedin.com/company/sanitopia-projects/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.tiktok.com/@sanitopiaprojects" target="_blank" rel="noopener">TikTok</a>
+          </div>
+        </p>
+      </div>
+      <form class="form fade-up" style="transition-delay: 0.1s" onsubmit="event.preventDefault(); alert('Thank you — we will be in touch. (Wire this form to your email service to enable sending.)'); this.reset();">
+        <div class="row">
+          <div><label>Name</label><input required type="text" placeholder="Your name" /></div>
+          <div><label>Email</label><input required type="email" placeholder="you@example.com" /></div>
+        </div>
+        <div><label>I'm reaching out about</label><select>
+          <option>General enquiry</option>
+          <option>Press / media</option>
+          <option>Partnership / sponsorship</option>
+          <option>Volunteering</option>
+          <option>Donation question</option>
+        </select></div>
+        <div><label>Message</label><textarea required placeholder="Tell us a bit more..."></textarea></div>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+`;
+
+T.legal = (which) => {
+  const titles = {
+    privacy: { c: "Legal / Privacy", t: "Privacy Policy" },
+    terms: { c: "Legal / Terms", t: "Terms & Conditions" },
+    cookies: { c: "Legal / Cookies", t: "Cookies Policy" },
+    slavery: { c: "Legal / Anti-Modern Slavery", t: "Anti-Modern Slavery Policy" },
+  };
+  const meta = titles[which] || titles.privacy;
+  return `
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">${meta.c}</div>
+    <h1 class="fade-up">${meta.t}</h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Last updated 2025. This is a placeholder for the policy text — your legal team should provide the final wording before launch.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="prose fade-up">
+      <p>Sanitopia is committed to operating with transparency, integrity, and respect for the rights of every individual we work with. The full text of this policy will be published here.</p>
+      <p>If you have questions in the meantime, please contact us at <a href="mailto:info@sanitopiaprojects.org" style="color: var(--clay)">info@sanitopiaprojects.org</a>.</p>
+    </div>
+  </div>
+</section>
+`;
+};
+
+// ============== ROUTER ==============
+const routes = {
+  "/": T.home,
+  "/about": T.about,
+  "/founder": T.founder,
+  "/team": T.team,
+  "/purpose": T.purpose,
+  "/impact": T.impact,
+  "/values": T.values,
+  "/book": T.book,
+  "/projects": T.projects,
+  "/nkonya": T.nkonya,
+  "/gallery": T.gallery,
+  "/news": T.news,
+  "/donate": T.donate,
+  "/contact": T.contact,
+  "/privacy": () => T.legal("privacy"),
+  "/terms": () => T.legal("terms"),
+  "/cookies": () => T.legal("cookies"),
+  "/slavery": () => T.legal("slavery"),
+};
+
+const app = document.getElementById("app");
+function render() {
+  const path = (location.hash || "#/").replace(/^#/, "") || "/";
+  const handler = routes[path] || routes["/"];
+  app.innerHTML = handler();
+  document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(a => {
+    a.classList.toggle("active", a.getAttribute("href") === "#" + path);
+  });
+  // close mobile menu
+  document.getElementById("mobileMenu").classList.remove("open");
+  document.querySelector(".menu-toggle").classList.remove("open");
+  document.body.style.overflow = "";
+  // scroll to top
+  window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  // observe fade-ups
+  observeFades();
+  // bind lightbox
+  bindLightbox();
+}
+
+window.addEventListener("hashchange", render);
+window.addEventListener("DOMContentLoaded", render);
+
+// ============== INTERACTIONS ==============
+function observeFades() {
+  const els = document.querySelectorAll(".fade-up:not(.in)");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(e => e.classList.add("in"));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add("in");
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(el => io.observe(el));
+}
+
+// Mobile menu
+const toggle = document.querySelector(".menu-toggle");
+const mobile = document.getElementById("mobileMenu");
+toggle.addEventListener("click", () => {
+  const open = !mobile.classList.contains("open");
+  mobile.classList.toggle("open", open);
+  toggle.classList.toggle("open", open);
+  document.body.style.overflow = open ? "hidden" : "";
+});
+mobile.addEventListener("click", (e) => {
+  const acc = e.target.closest(".acc");
+  if (acc) {
+    acc.parentElement.classList.toggle("open");
+    const sign = acc.querySelector("span");
+    if (sign) sign.textContent = acc.parentElement.classList.contains("open") ? "−" : "+";
+  }
+});
+
+// Lightbox
+function bindLightbox() {
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  document.querySelectorAll("[data-lb]").forEach(el => {
+    el.addEventListener("click", () => {
+      lbImg.src = el.getAttribute("data-lb");
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+  });
+  lb.addEventListener("click", () => { lb.classList.remove("open"); document.body.style.overflow = ""; });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lb.classList.contains("open")) { lb.classList.remove("open"); document.body.style.overflow = ""; }
+  });
+}
+
+// Donation tier interaction
+document.addEventListener("click", (e) => {
+  const tier = e.target.closest(".tier");
+  if (tier) {
+    document.querySelectorAll(".tier").forEach(t => t.classList.remove("featured"));
+    tier.classList.add("featured");
+  }
+});
+</script>
+</body>
+</html>
