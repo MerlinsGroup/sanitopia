@@ -6,30 +6,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sanitopia — Building dignity, one toilet at a time</title>
 <meta name="description" content="Sanitopia is a Community Interest Company building safe, clean sanitation across Africa. Goal: 10,000 projects by 2035." />
+<link rel="icon" type="image/png" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-192x192.png" />
+<link rel="apple-touch-icon" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-180x180.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,200..900,0..100&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,200..900,0..100&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --paper: #F1EBE0;
-  --paper-2: #E8DECF;
-  --soft: #FAF6EE;
-  --ink: #161513;
-  --ink-2: #3A3530;
-  --ink-3: #6B6258;
-  --clay: #B5491F;
-  --clay-dark: #8B3614;
-  --forest: #2D4A3E;
-  --forest-dark: #1F3329;
-  --gold: #D9A441;
-  --line: rgba(22, 21, 19, 0.12);
-  --line-strong: rgba(22, 21, 19, 0.22);
-  --shadow-soft: 0 1px 2px rgba(22,21,19,0.04), 0 8px 24px rgba(22,21,19,0.06);
-  --shadow-lift: 0 4px 12px rgba(22,21,19,0.08), 0 24px 60px rgba(22,21,19,0.12);
-  --display: "Fraunces", "Times New Roman", serif;
-  --sans: "Inter Tight", system-ui, sans-serif;
-  --container: 1240px;
-  --radius: 4px;
+  /* premium cream + royal purple + gold — derived from Sanitopia's brand */
+  --paper: #FAF6EE;
+  --paper-2: #F0E9DA;
+  --soft: #FFFDF8;
+  --ink: #14091F;
+  --ink-2: #2D1A45;
+  --ink-3: #6F6383;
+  --clay: #3F1773;          /* brand purple — replaces clay (donate button colour) */
+  --clay-dark: #2A0F50;
+  --clay-light: #6B3CA8;
+  --forest: #1E0A3D;        /* deep plum — replaces forest for dark sections */
+  --forest-dark: #110522;
+  --gold: #D4AF37;          /* refined champagne gold */
+  --gold-soft: #E9C75A;
+  --teal: #1F8A8A;          /* secondary accent from logo mark */
+  --line: rgba(20, 9, 31, 0.10);
+  --line-strong: rgba(20, 9, 31, 0.20);
+  --shadow-soft: 0 1px 2px rgba(20,9,31,0.05), 0 10px 30px rgba(63,23,115,0.08);
+  --shadow-lift: 0 4px 14px rgba(20,9,31,0.10), 0 30px 70px rgba(63,23,115,0.18);
+  --shadow-glow: 0 10px 40px rgba(63,23,115,0.35), 0 0 0 1px rgba(212,175,55,0.10);
+  --display: "Playfair Display", "Fraunces", "Times New Roman", serif;
+  --sans: "Poppins", "Inter", system-ui, sans-serif;
+  --container: 1280px;
+  --radius: 6px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,10 +70,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.04;
-  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.06;
 }
 h1 { font-size: clamp(2.5rem, 6.5vw, 5.4rem); }
 h2 { font-size: clamp(2rem, 4.5vw, 3.6rem); }
@@ -90,7 +96,7 @@ h4 { font-size: 1.25rem; line-height: 1.2; }
   height: 1px;
   background: var(--clay);
 }
-em, .ital { font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 100; }
+em, .ital { font-style: italic; }
 .serif { font-family: var(--display); }
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
@@ -122,11 +128,25 @@ header.nav {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(241, 235, 224, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(250, 246, 238, 0.85);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   border-bottom: 1px solid var(--line);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
+header.nav.is-over-hero {
+  background: rgba(20, 9, 31, 0.35);
+  border-bottom-color: rgba(255,255,255,0.12);
+}
+header.nav.is-over-hero .nav-links a,
+header.nav.is-over-hero .nav-links button.menu-trigger { color: rgba(250,246,238,0.92); }
+header.nav.is-over-hero .nav-links a:hover,
+header.nav.is-over-hero .nav-links button.menu-trigger:hover { color: var(--gold); }
+header.nav.is-over-hero .brand-logo { filter: brightness(0) invert(1); }
+header.nav.is-over-hero .menu-toggle { border-color: rgba(255,255,255,0.4); }
+header.nav.is-over-hero .menu-toggle span,
+header.nav.is-over-hero .menu-toggle span::before,
+header.nav.is-over-hero .menu-toggle span::after { background: var(--paper); }
 .nav-inner {
   display: flex;
   align-items: center;
@@ -137,35 +157,23 @@ header.nav {
   gap: 2rem;
 }
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.7rem;
   font-family: var(--display);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 144, "SOFT" 80;
+  color: var(--ink);
+  font-weight: 600;
 }
-.brand-mark {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: var(--clay);
-  display: grid;
-  place-items: center;
-  color: var(--paper);
-  font-weight: 700;
-  font-family: var(--sans);
-  font-size: 1rem;
-  letter-spacing: 0;
-  position: relative;
+.brand-logo {
+  height: 56px;
+  width: auto;
+  display: block;
 }
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border: 1px solid var(--clay);
-  border-radius: 50%;
-  opacity: 0.4;
-}
+.footer-brand .brand-logo { height: 64px; filter: brightness(0) invert(1); opacity: 0.95; }
+.brand-wordmark { display: none; } /* logo image already contains wordmark */
+.brand-mark { display: none; } /* legacy placeholder, replaced by image */
 .nav-links {
   display: flex;
   align-items: center;
@@ -186,7 +194,7 @@ header.nav {
 }
 .nav-links a:hover, .nav-links button.menu-trigger:hover,
 .nav-links a.active { color: var(--clay); }
-.nav-links a.active { background: rgba(181, 73, 31, 0.08); }
+.nav-links a.active { background: rgba(63, 23, 115, 0.08); }
 .nav-links .caret { font-size: 0.7rem; opacity: 0.6; }
 
 .dropdown {
@@ -217,24 +225,37 @@ header.nav {
 .dropdown a:hover { background: var(--paper-2); color: var(--clay); }
 
 .btn-donate {
-  background: var(--ink);
+  position: relative;
+  background: linear-gradient(135deg, var(--clay) 0%, var(--clay-dark) 100%);
   color: var(--paper);
-  padding: 0.7rem 1.4rem;
+  padding: 0.85rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   letter-spacing: 0.02em;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  box-shadow: 0 6px 20px rgba(63,23,115,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-donate::before {
+  content: "♥";
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-right: 0.1rem;
+  transition: transform 0.3s ease;
 }
 .btn-donate::after {
   content: "→";
-  transition: transform 0.2s;
+  transition: transform 0.25s ease;
 }
-.btn-donate:hover { background: var(--clay); transform: translateY(-1px); }
-.btn-donate:hover::after { transform: translateX(3px); }
+.btn-donate:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(63,23,115,0.5), 0 0 0 1px var(--gold); }
+.btn-donate:hover::after { transform: translateX(4px); }
+.btn-donate:hover::before { transform: scale(1.2); }
 
 .menu-toggle {
   display: none;
@@ -305,20 +326,32 @@ header.nav {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.6rem;
+  gap: 0.55rem;
+  padding: 0.95rem 1.8rem;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
   border-radius: 999px;
-  transition: all 0.25s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   border: 1px solid transparent;
+  cursor: pointer;
 }
-.btn-primary { background: var(--clay); color: var(--paper); }
-.btn-primary:hover { background: var(--clay-dark); transform: translateY(-1px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--clay) 0%, var(--clay-dark) 100%);
+  color: var(--paper);
+  box-shadow: 0 6px 22px rgba(63,23,115,0.30);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(63,23,115,0.45), 0 0 0 1px var(--gold); }
 .btn-secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+.btn-secondary:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.btn-ghost { background: rgba(255,255,255,0.10); color: var(--paper); border-color: rgba(255,255,255,0.30); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.btn-ghost:hover { background: rgba(255,255,255,0.18); border-color: var(--gold); color: var(--paper); transform: translateY(-2px); }
+.btn-gold { background: linear-gradient(135deg, var(--gold) 0%, #B58E1F 100%); color: var(--ink); box-shadow: 0 6px 22px rgba(212,175,55,0.30); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,175,55,0.45); }
 .btn::after { content: "→"; transition: transform 0.2s; }
-.btn:hover::after { transform: translateX(3px); }
+.btn:hover::after { transform: translateX(4px); }
+.btn-play::before { content: "▶"; font-size: 0.65rem; width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: var(--ink); display: inline-grid; place-items: center; margin-right: 0.3rem; }
+.btn-play::after { content: ""; }
 
 .section { padding: 6rem 0; }
 .section-tight { padding: 4rem 0; }
@@ -326,88 +359,186 @@ header.nav {
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.in { opacity: 1; transform: translateY(0); }
 
-/* ============ HERO ============ */
+/* ============ HERO (cinematic, full-bleed video) ============ */
 .hero {
-  padding: 4rem 0 5rem;
   position: relative;
+  min-height: clamp(640px, 92vh, 1000px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: -1px; /* tuck under sticky nav border */
+  color: var(--paper);
 }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.hero-video,
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-bg-img {
+  background-size: cover;
+  background-position: center;
+  animation: kenburns 22s ease-in-out infinite alternate;
+  z-index: -1;
+}
+.hero-video {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.hero-video.ready { opacity: 1; }
+@keyframes kenburns {
+  0%   { transform: scale(1.05) translate(0, 0); }
+  100% { transform: scale(1.18) translate(-1.5%, -1%); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(20,9,31,0.55) 0%, rgba(20,9,31,0.35) 40%, rgba(20,9,31,0.85) 100%),
+    radial-gradient(120% 80% at 80% 20%, rgba(63,23,115,0.45) 0%, transparent 60%),
+    radial-gradient(80% 60% at 10% 90%, rgba(212,175,55,0.18) 0%, transparent 60%);
+}
+.hero .container { position: relative; z-index: 2; padding-top: 6rem; padding-bottom: 6rem; }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: end;
 }
+.hero .eyebrow {
+  color: var(--gold);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.hero .eyebrow::before { background: var(--gold); width: 2.2rem; }
 .hero h1 {
-  font-size: clamp(2.6rem, 6.2vw, 5.2rem);
-  font-variation-settings: "opsz" 144, "SOFT" 30;
+  margin-top: 1.5rem;
+  font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+  color: var(--paper);
+  font-weight: 500;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.35);
 }
 .hero h1 .accent {
   font-style: italic;
-  color: var(--clay);
-  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-weight: 400;
+  color: var(--gold);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .hero-lede {
   font-size: 1.15rem;
-  color: var(--ink-2);
-  margin: 1.8rem 0 2.2rem;
-  max-width: 36rem;
-  line-height: 1.55;
+  color: rgba(250,246,238,0.85);
+  margin: 1.8rem 0 2.4rem;
+  max-width: 38rem;
+  line-height: 1.6;
+  font-weight: 300;
 }
-.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-.hero-collage {
-  position: relative;
-  aspect-ratio: 4/5;
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  align-items: flex-end;
+  text-align: right;
 }
-.hero-collage img {
-  position: absolute;
-  border-radius: 6px;
-  object-fit: cover;
-  box-shadow: var(--shadow-lift);
+.hero-badge {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 1.6rem 1.8rem;
+  text-align: left;
+  max-width: 280px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
-.hero-collage .img-1 {
-  width: 78%; height: 70%;
-  top: 0; right: 0;
-  z-index: 2;
-}
-.hero-collage .img-2 {
-  width: 58%; height: 50%;
-  bottom: 0; left: 0;
-  z-index: 3;
-  border: 6px solid var(--paper);
-}
-.hero-collage .badge {
-  position: absolute;
-  top: 8%;
-  left: -2%;
-  z-index: 4;
-  background: var(--gold);
-  color: var(--ink);
-  padding: 1rem 1.2rem;
-  border-radius: 50%;
-  width: 130px; height: 130px;
-  display: grid;
-  place-items: center;
-  text-align: center;
+.hero-badge .num {
   font-family: var(--display);
-  font-size: 0.95rem;
-  line-height: 1.1;
-  transform: rotate(-8deg);
-  box-shadow: var(--shadow-soft);
-}
-.hero-collage .badge strong {
-  display: block;
-  font-size: 1.7rem;
+  font-size: 3.2rem;
   font-style: italic;
   font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-badge .lbl { color: rgba(250,246,238,0.85); font-size: 0.9rem; margin-top: 0.4rem; line-height: 1.4; }
+.hero-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250,246,238,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.hero-trust .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(250,246,238,0.7);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.scroll-cue .line {
+  width: 1px; height: 38px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
 .hero-marquee {
-  margin-top: 4rem;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 1rem 0;
+  background: var(--ink);
+  border-top: 1px solid rgba(212,175,55,0.18);
+  border-bottom: 1px solid rgba(212,175,55,0.18);
+  padding: 1.2rem 0;
   overflow: hidden;
+  position: relative;
+  z-index: 5;
 }
 .marquee-track {
   display: flex;
@@ -416,12 +547,12 @@ header.nav {
   white-space: nowrap;
   font-family: var(--display);
   font-size: 1.4rem;
-  font-variation-settings: "opsz" 144, "SOFT" 80;
   font-style: italic;
-  color: var(--ink-3);
+  font-weight: 400;
+  color: rgba(250,246,238,0.85);
 }
 .marquee-track span { display: inline-flex; align-items: center; gap: 4rem; }
-.marquee-track span::after { content: "✦"; color: var(--clay); font-style: normal; }
+.marquee-track span::after { content: "✦"; color: var(--gold); font-style: normal; }
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
@@ -1042,13 +1173,15 @@ footer.site-footer {
   .topbar-inner { justify-content: center; font-size: 0.72rem; }
   .cta-actions { justify-content: flex-start; }
   .section { padding: 4.5rem 0; }
-  .hero { padding: 2rem 0 3rem; }
+  .hero { min-height: 88vh; }
+  .hero .container { padding-top: 4rem; padding-bottom: 4rem; }
+  .hero-meta { align-items: flex-start; text-align: left; flex-direction: row; flex-wrap: wrap; }
+  .hero-badge { max-width: 100%; flex: 1 1 240px; }
   .quote-block::before { font-size: 18rem; }
-  .hero-collage .badge { width: 100px; height: 100px; font-size: 0.78rem; }
-  .hero-collage .badge strong { font-size: 1.3rem; }
   body { font-size: 16px; }
   .editorial { padding: 5rem 0; }
   .feature, .quote-block, .purpose, .book-section { padding: 5rem 0; }
+  .scroll-cue { display: none; }
 }
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1058,11 +1191,14 @@ footer.site-footer {
   .form .row { grid-template-columns: 1fr; }
   .donate-tiers { grid-template-columns: 1fr 1fr; }
   .hero h1 .accent { display: inline; }
+  .hero { min-height: 78vh; }
   .feature-content { padding: 2rem 1.5rem; }
   .nav-inner { padding: 0.85rem 1.2rem; gap: 1rem; }
-  .brand { font-size: 1.3rem; }
-  .brand-mark { width: 32px; height: 32px; font-size: 0.85rem; }
+  .brand-logo { height: 44px; }
+  .footer-brand .brand-logo { height: 52px; }
   .topbar { display: none; }
+  .btn { padding: 0.85rem 1.4rem; font-size: 0.88rem; }
+  .btn-donate { padding: 0.7rem 1.2rem; font-size: 0.85rem; }
 }
 
 /* ============ UTILITY ============ */
@@ -1097,9 +1233,8 @@ footer.site-footer {
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="#/" class="brand" data-link>
-      <span class="brand-mark">S</span>
-      <span>Sanitopia</span>
+    <a href="#/" class="brand" data-link aria-label="Sanitopia — home">
+      <img class="brand-logo" src="https://sanitopiaprojects.org/wp-content/uploads/2020/04/Sanitopia-Logo-black-png-1.png" alt="Sanitopia" />
     </a>
     <nav>
       <ul class="nav-links">
@@ -1164,10 +1299,9 @@ footer.site-footer {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand" style="color: var(--paper)">
-          <span class="brand-mark">S</span>
-          <span>Sanitopia</span>
-        </div>
+        <a href="#/" data-link class="brand" style="color: var(--paper)">
+          <img class="brand-logo" src="https://sanitopiaprojects.org/wp-content/uploads/2020/04/Sanitopia-Logo-black-png-1.png" alt="Sanitopia" />
+        </a>
         <p>A Community Interest Company building safe, dignified sanitation across Africa. Our mission: 10,000 projects by 2035.</p>
       </div>
       <div>
@@ -1281,32 +1415,50 @@ const IMG = {
 const T = {};
 
 T.home = () => `
-<section class="hero">
+<section class="hero" data-hero>
+  <div class="hero-bg">
+    <div class="hero-bg-img" style="background-image: url('${IMG.hero}')"></div>
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="${IMG.hero}">
+      <!-- Drop your branded reel into /assets/hero.mp4 to enable. Falls back to the cinematic photo above. -->
+      <source src="assets/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
   <div class="container">
     <div class="hero-grid">
       <div class="fade-up">
-        <span class="eyebrow">A community-led mission</span>
-        <h1 style="margin-top: 1.5rem">Building <span class="accent">dignity,</span><br>one toilet at a time.</h1>
+        <span class="hero-trust"><span class="dot"></span>UK CIC · Registered non-profit in Ghana</span>
+        <span class="eyebrow" style="margin-top: 1.5rem; display: inline-flex">A community-led mission</span>
+        <h1>Building <span class="accent">dignity,</span><br/>one toilet at a time.</h1>
         <p class="hero-lede">Sanitopia is a Community Interest Company creating safe and clean sanitation across Africa. Our pledge: complete 10,000 projects by 2035 — starting with the schools that shaped us.</p>
         <div class="hero-cta-row">
-          <a href="#/donate" data-link class="btn btn-primary">Support a project</a>
-          <a href="#/nkonya" data-link class="btn btn-secondary">See our pilot</a>
+          <a href="#/donate" data-link class="btn btn-gold">Donate now</a>
+          <a href="#/nkonya" data-link class="btn btn-ghost btn-play">Watch our story</a>
         </div>
       </div>
-      <div class="hero-collage fade-up" style="transition-delay: 0.15s">
-        <img class="img-1" src="${IMG.hero}" alt="Children at Nkonya Senior High School" loading="lazy" />
-        <img class="img-2" src="${IMG.completion[0]}" alt="Completed washroom facility" loading="lazy" />
-        <div class="badge"><div><strong>10K</strong>by 2035</div></div>
-      </div>
-    </div>
-    <div class="hero-marquee">
-      <div class="marquee-track">
-        <span>Clean water</span><span>Restored dignity</span><span>Safer schools</span><span>Healthier communities</span><span>Gender equality</span>
-        <span>Clean water</span><span>Restored dignity</span><span>Safer schools</span><span>Healthier communities</span><span>Gender equality</span>
+      <div class="hero-meta fade-up" style="transition-delay: 0.15s">
+        <div class="hero-badge">
+          <div class="num">10K</div>
+          <div class="lbl">Sanitation projects pledged across Africa by 2035.</div>
+        </div>
+        <div class="hero-badge">
+          <div class="num">37</div>
+          <div class="lbl">Toilet units delivered in our first 120 days at Nkonya SHS.</div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
 </section>
+<div class="hero-marquee">
+  <div class="marquee-track">
+    <span>Clean water</span><span>Restored dignity</span><span>Safer schools</span><span>Healthier communities</span><span>Gender equality</span>
+    <span>Clean water</span><span>Restored dignity</span><span>Safer schools</span><span>Healthier communities</span><span>Gender equality</span>
+  </div>
+</div>
 
 <section class="stats">
   <div class="container">
@@ -2094,6 +2246,33 @@ function render() {
   observeFades();
   // bind lightbox
   bindLightbox();
+  // hero-aware nav + video ready state
+  setupHeroChrome();
+}
+
+function setupHeroChrome() {
+  const nav = document.querySelector("header.nav");
+  const hero = document.querySelector("[data-hero]");
+  if (!nav) return;
+  if (!hero) { nav.classList.remove("is-over-hero"); return; }
+
+  // mark video ready only when it has real frames (otherwise the photo bg handles it)
+  const video = hero.querySelector(".hero-video");
+  if (video) {
+    const markReady = () => video.classList.add("ready");
+    if (video.readyState >= 2) markReady();
+    video.addEventListener("loadeddata", markReady, { once: true });
+    video.addEventListener("error", () => video.remove(), { once: true });
+    // if any <source> errors out, kill the video element so the photo bg shows cleanly
+    video.querySelectorAll("source").forEach(s => s.addEventListener("error", () => video.remove(), { once: true }));
+  }
+
+  // observe whether the hero is in view; toggle nav style
+  if (!("IntersectionObserver" in window)) { nav.classList.add("is-over-hero"); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => nav.classList.toggle("is-over-hero", en.isIntersecting && en.intersectionRatio > 0.15));
+  }, { threshold: [0, 0.15, 0.5, 1] });
+  io.observe(hero);
 }
 
 window.addEventListener("hashchange", render);
