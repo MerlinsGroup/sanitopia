@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donate — Sanitopia</title>
+<meta name="description" content="Build with us. Brick by brick. Every donation funds materials, local labour and long-term maintenance." />
+<link rel="icon" type="image/png" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-192x192.png" />
+<link rel="apple-touch-icon" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-180x180.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="site-topbar"></div>
+<header id="site-nav"></header>
+<aside id="site-mobile"></aside>
+
+<main>
+
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Donate</div>
+    <h1 class="fade-up">Build with us. <em>Brick by brick.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Every donation is allocated transparently — materials, local labour, long-term maintenance. Pick a tier or set your own amount.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="donate-tiers fade-up">
+      <div class="tier"><div class="amount">£10</div><div class="desc">Funds handwashing supplies for one classroom for a month.</div></div>
+      <div class="tier"><div class="amount">£25</div><div class="desc">Sponsors hygiene education materials for an entire grade.</div></div>
+      <div class="tier featured"><span class="badge">Most chosen</span><div class="amount">£50</div><div class="desc">Pays for one full month of community-led maintenance.</div></div>
+      <div class="tier"><div class="amount">£100</div><div class="desc">Contributes directly to the build cost of one toilet seat unit.</div></div>
+      <div class="tier"><div class="amount">£500+</div><div class="desc">Become a project partner. We'll invite you to commissioning.</div></div>
+    </div>
+
+    <form class="form fade-up" style="max-width: 640px; margin: 3rem auto 0" onsubmit="event.preventDefault(); alert('Thank you. Your donation flow would continue here. Connect Stripe / GoCardless / Donorbox to your domain to enable.');">
+      <div class="row">
+        <div><label>First name</label><input required type="text" placeholder="Your first name" /></div>
+        <div><label>Last name</label><input required type="text" placeholder="Your last name" /></div>
+      </div>
+      <div><label>Email</label><input required type="email" placeholder="you@example.com" /></div>
+      <div class="row">
+        <div><label>Amount (£)</label><input required type="number" min="1" placeholder="50" /></div>
+        <div><label>Frequency</label><select><option>One-time</option><option>Monthly</option><option>Quarterly</option><option>Annually</option></select></div>
+      </div>
+      <div><label>Message (optional)</label><textarea placeholder="Anything you'd like us to know..."></textarea></div>
+      <button type="submit">Continue to secure payment</button>
+      <p style="font-size: 0.85rem; color: var(--ink-3); margin-top: 0.5rem">Your data is private. We never share donor details. Sanitopia is a UK CIC — donations may be eligible for Gift Aid where applicable.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Other ways to help</span>
+      <h2>You don't have to donate to make a difference.</h2>
+    </div>
+    <div class="card-grid">
+      <div class="value-card fade-up"><div class="num">i.</div><h3>Buy the book</h3><p>Crushed But Not Destroyed — every copy directly funds projects.</p></div>
+      <div class="value-card fade-up" style="transition-delay: 0.1s"><div class="num">ii.</div><h3>Become a partner</h3><p>Corporate sponsorship of a whole project, named after your organisation.</p></div>
+      <div class="value-card fade-up" style="transition-delay: 0.2s"><div class="num">iii.</div><h3>Volunteer skills</h3><p>Engineering, finance, design, fieldwork, fundraising — we welcome it all.</p></div>
+      <div class="value-card fade-up" style="transition-delay: 0.3s"><div class="num">iv.</div><h3>Spread the word</h3><p>Follow us, share our work, tell one person. It compounds faster than you'd think.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+<div id="site-lightbox"></div>
+<script src="assets/site.js"></script>
+</body>
+</html>

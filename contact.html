@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Sanitopia</title>
+<meta name="description" content="Press, partnerships, volunteering, or just curiosity — we read every message." />
+<link rel="icon" type="image/png" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-192x192.png" />
+<link rel="apple-touch-icon" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-180x180.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div id="site-topbar"></div>
+<header id="site-nav"></header>
+<aside id="site-mobile"></aside>
+
+<main>
+
+<section class="page-head">
+  <div class="container">
+    <div class="crumb">Contact</div>
+    <h1 class="fade-up">Let's <em>talk.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Press, partnerships, volunteering, or just curiosity — we read every message.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div><div class="label">Email</div><div class="val"><a href="mailto:info@sanitopiaprojects.org">info@sanitopiaprojects.org</a></div></div>
+        <div style="margin-top: 1.5rem"><div class="label">Phone</div><div class="val"><a href="tel:+443302320143">+44 330 232 0143</a></div></div>
+        <div style="margin-top: 1.5rem"><div class="label">Registration</div><div class="val" style="font-size: 1rem; line-height: 1.5">UK Community Interest Company<br/>Registered non-profit in Ghana</div></div>
+        <div style="margin-top: 1.5rem">
+          <div class="label">Follow</div>
+          <div style="display: flex; gap: 0.6rem; margin-top: 0.4rem; flex-wrap: wrap">
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.facebook.com/profile.php?id=61575746451301" target="_blank" rel="noopener">Facebook</a>
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.instagram.com/sanitopiaprojects/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.linkedin.com/company/sanitopia-projects/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-secondary" style="padding: 0.55rem 1rem; font-size: 0.85rem" href="https://www.tiktok.com/@sanitopiaprojects" target="_blank" rel="noopener">TikTok</a>
+          </div>
+        </div>
+      </div>
+      <form class="form fade-up" style="transition-delay: 0.1s" onsubmit="event.preventDefault(); alert('Thank you — we will be in touch. (Wire this form to your email service to enable sending.)'); this.reset();">
+        <div class="row">
+          <div><label>Name</label><input required type="text" placeholder="Your name" /></div>
+          <div><label>Email</label><input required type="email" placeholder="you@example.com" /></div>
+        </div>
+        <div><label>I'm reaching out about</label><select>
+          <option>General enquiry</option>
+          <option>Press / media</option>
+          <option>Partnership / sponsorship</option>
+          <option>Volunteering</option>
+          <option>Donation question</option>
+        </select></div>
+        <div><label>Message</label><textarea required placeholder="Tell us a bit more..."></textarea></div>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+<div id="site-lightbox"></div>
+<script src="assets/site.js"></script>
+</body>
+</html>
