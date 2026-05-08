@@ -14,23 +14,92 @@
 <style>
   /* ============ INDEX-SCOPED OVERRIDES (home page only) ============ */
 
-  /* MOBILE NAVBAR — hide secondary CTA cluster so brand + hamburger have room */
+  /* MOBILE NAVBAR — hide desktop CTA cluster, show a compact "Donate" pill */
   @media (max-width: 980px) {
     #site-nav .nav-inner > div { display: none !important; }
-    #site-nav .nav-inner { justify-content: space-between; }
+    #site-nav .nav-inner {
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.2rem;
+    }
+  }
+  .nav-mobile-donate {
+    display: none;
+    align-items: center;
+    background: linear-gradient(135deg, var(--clay) 0%, var(--clay-dark) 100%);
+    color: var(--paper);
+    text-decoration: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 6px 18px rgba(63,23,115,0.35), 0 0 0 1px rgba(212,175,55,0.4);
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-mobile-donate:hover, .nav-mobile-donate:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(63,23,115,0.45), 0 0 0 1px var(--gold);
+  }
+  @media (max-width: 980px) {
+    .nav-mobile-donate { display: inline-flex; }
   }
 
-  /* MOBILE HERO — tighter copy so it actually fits the screen */
+  /* MOBILE HERO — content lifted into upper third, generous internal rhythm */
   @media (max-width: 720px) {
-    .hero h1 { font-size: clamp(2rem, 8.6vw, 2.8rem); line-height: 1.08; }
-    .hero .hero-lede { font-size: 1rem; margin: 1.1rem 0 1.6rem; line-height: 1.5; max-width: 100%; }
-    .hero-cta-row { gap: 0.7rem; width: 100%; }
-    .hero-cta-row .btn { padding: 0.78rem 1.1rem; font-size: 0.85rem; flex: 1 1 auto; text-align: center; }
+    .hero { min-height: clamp(620px, 82vh, 820px); }
+    /* Top-anchor the slide content so the headline sits high; the photo gets to breathe below */
+    .hero-slide { align-items: flex-start; }
+    .hero-slide-content .container { padding-top: 6.5rem; padding-bottom: 4.5rem; }
+    .hero h1 {
+      font-size: clamp(2.3rem, 9.4vw, 3.1rem);
+      line-height: 1.08;
+      margin-top: 0;
+      margin-bottom: 2.2rem;
+    }
+    .hero .hero-lede {
+      font-size: 1.15rem;
+      margin: 0 0 2.6rem;
+      line-height: 1.55;
+      max-width: 100%;
+    }
+    /* Stack CTAs full-width with a clear gap so they read as separate actions, not a mushed pair */
+    .hero-cta-row { gap: 1.2rem; width: 100%; flex-direction: column; align-items: stretch; }
+    .hero-cta-row .btn {
+      padding: 1.05rem 1.3rem;
+      font-size: 0.98rem;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+    }
+    /* Carousel dots get room above the next section */
+    .hero-controls { bottom: 1.6rem; }
   }
   @media (max-width: 460px) {
-    /* Tiny screens — drop the lede; the h1 + CTAs are enough */
-    .hero .hero-lede { display: none; }
-    .hero h1 { font-size: clamp(1.9rem, 9.4vw, 2.4rem); }
+    /* Tiny screens — keep the one-sentence lede, just trim the type slightly */
+    .hero h1 { font-size: clamp(2.05rem, 9.6vw, 2.6rem); margin-bottom: 1.8rem; }
+    .hero .hero-lede { font-size: 1.05rem; margin: 0 0 2.2rem; line-height: 1.5; }
+    .hero-slide-content .container { padding-top: 5.5rem; padding-bottom: 4rem; }
+    .hero-cta-row { gap: 1.2rem; }
+    .hero-cta-row .btn { padding: 1rem 1.2rem; font-size: 0.95rem; }
+  }
+
+  /* PROOF STRIP — give it real breathing room on mobile, stack to one column on tight screens */
+  @media (max-width: 720px) {
+    .stats.proof-strip { padding: 1.6rem 0 !important; }
+    .stats.proof-strip .stats-grid {
+      grid-template-columns: 1fr !important;
+      gap: 0.9rem !important;
+      text-align: center;
+    }
+    .stats.proof-strip .stat-item .label { font-size: 0.92rem; }
+  }
+  /* Add a clear gap between hero and the section that follows it on mobile */
+  @media (max-width: 720px) {
+    .hero + .stats { margin-top: 0; }
+    .stats + .purpose { padding-top: 4rem; }
   }
 
   /* ============ SCROLL REVEAL — stronger entrance on home ============ */
@@ -99,7 +168,7 @@
           <div class="hero-grid">
             <div>
               <h1>Safe toilets keep children in school and restore <span class="accent">dignity</span>.</h1>
-              <p class="hero-lede">We build modern sanitation facilities for schools, libraries and communities across Ghana. When toilets work, girls attend class. Disease doesn't spread. Communities thrive.</p>
+              <p class="hero-lede">Modern sanitation for Ghana's schools, libraries and communities — keeping girls in class and disease out.</p>
               <div class="hero-cta-row">
                 <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
@@ -117,7 +186,7 @@
           <div class="hero-grid">
             <div>
               <h1>Safe toilets keep children in school and restore <span class="accent">dignity</span>.</h1>
-              <p class="hero-lede">We build modern sanitation facilities for schools, libraries and communities across Ghana. When toilets work, girls attend class. Disease doesn't spread. Communities thrive.</p>
+              <p class="hero-lede">Modern sanitation for Ghana's schools, libraries and communities — keeping girls in class and disease out.</p>
               <div class="hero-cta-row">
                 <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
@@ -135,7 +204,7 @@
           <div class="hero-grid">
             <div>
               <h1>Safe toilets keep children in school and restore <span class="accent">dignity</span>.</h1>
-              <p class="hero-lede">We build modern sanitation facilities for schools, libraries and communities across Ghana. When toilets work, girls attend class. Disease doesn't spread. Communities thrive.</p>
+              <p class="hero-lede">Modern sanitation for Ghana's schools, libraries and communities — keeping girls in class and disease out.</p>
               <div class="hero-cta-row">
                 <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
@@ -153,7 +222,7 @@
           <div class="hero-grid">
             <div>
               <h1>Safe toilets keep children in school and restore <span class="accent">dignity</span>.</h1>
-              <p class="hero-lede">We build modern sanitation facilities for schools, libraries and communities across Ghana. When toilets work, girls attend class. Disease doesn't spread. Communities thrive.</p>
+              <p class="hero-lede">Modern sanitation for Ghana's schools, libraries and communities — keeping girls in class and disease out.</p>
               <div class="hero-cta-row">
                 <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
@@ -171,7 +240,7 @@
           <div class="hero-grid">
             <div>
               <h1>Safe toilets keep children in school and restore <span class="accent">dignity</span>.</h1>
-              <p class="hero-lede">We build modern sanitation facilities for schools, libraries and communities across Ghana. When toilets work, girls attend class. Disease doesn't spread. Communities thrive.</p>
+              <p class="hero-lede">Modern sanitation for Ghana's schools, libraries and communities — keeping girls in class and disease out.</p>
               <div class="hero-cta-row">
                 <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
@@ -200,7 +269,7 @@
 </section>
 
 <!-- ================ 2. PROOF STRIP ================ -->
-<section class="stats" style="background: var(--clay); color: var(--paper); padding: 1.5rem 0">
+<section class="stats proof-strip" style="background: var(--clay); color: var(--paper); padding: 1.5rem 0">
   <div class="container">
     <div class="stats-grid" style="gap: 2rem">
       <div class="stat-item fade-up" style="text-align: center">
@@ -422,6 +491,22 @@
 <div id="site-lightbox"></div>
 
 <script src="assets/site.js"></script>
+<script>
+  // Inject a compact "Donate" pill into the mobile navbar (between brand and hamburger).
+  // CSS handles the responsive show/hide; this just ensures the element exists.
+  (function () {
+    const navInner = document.querySelector('#site-nav .nav-inner');
+    const toggle = navInner && navInner.querySelector('.menu-toggle');
+    if (!navInner || !toggle) return;
+    if (navInner.querySelector('.nav-mobile-donate')) return;
+    const pill = document.createElement('a');
+    pill.href = 'donate.html';
+    pill.className = 'nav-mobile-donate';
+    pill.textContent = 'Donate';
+    pill.setAttribute('aria-label', 'Donate to a facility');
+    navInner.insertBefore(pill, toggle);
+  })();
+</script>
 <script>
   // Subtle image parallax — drifts elements with data-parallax based on viewport position.
   // Speed factor in the attribute (e.g. data-parallax="0.12"); reduced-motion users get a no-op.
