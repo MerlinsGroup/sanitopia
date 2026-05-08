@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Donate — Sanitopia</title>
-<meta name="description" content="Build with us. Brick by brick. Every donation funds materials, local labour and long-term maintenance." />
+<meta name="description" content="Fund safe sanitation in Ghana. Every donation builds toilets, provides water systems, and creates lasting change in schools and communities." />
 <link rel="icon" type="image/png" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-192x192.png" />
 <link rel="apple-touch-icon" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-180x180.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,49 +23,216 @@
 <section class="page-head">
   <div class="container">
     <div class="crumb">Donate</div>
-    <h1 class="fade-up">Build with us. <em>Brick by brick.</em></h1>
-    <p class="lede fade-up" style="transition-delay: 0.1s">Every donation is allocated transparently — materials, local labour, long-term maintenance. Pick a tier or set your own amount.</p>
+    <h1 class="fade-up">Fund safe sanitation in Ghana.</h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Every pound builds real facilities that serve real communities. Choose your impact level below.</p>
   </div>
 </section>
 
+<!-- ================ WHAT YOUR DONATION FUNDS ================ -->
+<section class="section" style="background: var(--paper-2)">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Where your money goes</span>
+      <h2>100% of donations fund facilities in Ghana.</h2>
+    </div>
+    <div class="card-grid" style="max-width: 900px; margin: 0 auto">
+      <div class="value-card fade-up" style="text-align: center">
+        <div class="icon" style="font-size: 2rem">🧱</div>
+        <h3>Construction materials</h3>
+        <p>Cement, blocks, roofing sheets, pipes, fixtures — all sourced locally in Ghana.</p>
+      </div>
+      <div class="value-card fade-up" style="transition-delay: 0.1s; text-align: center">
+        <div class="icon" style="font-size: 2rem">👷</div>
+        <h3>Local labour</h3>
+        <p>Ghanaian builders, plumbers, electricians — creating jobs while building facilities.</p>
+      </div>
+      <div class="value-card fade-up" style="transition-delay: 0.2s; text-align: center">
+        <div class="icon" style="font-size: 2rem">🔧</div>
+        <h3>Maintenance fund</h3>
+        <p>Caretaker training, cleaning supplies, and a reserve for repairs to ensure longevity.</p>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 2rem; color: var(--ink-3)">
+      Administrative costs are covered separately. Your donation goes directly to Ghana.
+    </p>
+  </div>
+</section>
+
+<!-- ================ DONATION TIERS ================ -->
 <section class="section">
   <div class="container">
-    <div class="donate-tiers fade-up">
-      <div class="tier"><div class="amount">£10</div><div class="desc">Funds handwashing supplies for one classroom for a month.</div></div>
-      <div class="tier"><div class="amount">£25</div><div class="desc">Sponsors hygiene education materials for an entire grade.</div></div>
-      <div class="tier featured"><span class="badge">Most chosen</span><div class="amount">£50</div><div class="desc">Pays for one full month of community-led maintenance.</div></div>
-      <div class="tier"><div class="amount">£100</div><div class="desc">Contributes directly to the build cost of one toilet seat unit.</div></div>
-      <div class="tier"><div class="amount">£500+</div><div class="desc">Become a project partner. We'll invite you to commissioning.</div></div>
+    <div class="section-head fade-up">
+      <span class="eyebrow">Choose your impact</span>
+      <h2>Every amount creates real change.</h2>
     </div>
 
-    <form class="form fade-up" style="max-width: 640px; margin: 3rem auto 0" onsubmit="event.preventDefault(); alert('Thank you. Your donation flow would continue here. Connect Stripe / GoCardless / Donorbox to your domain to enable.');">
+    <div class="donate-tiers fade-up" style="max-width: 1000px; margin: 0 auto">
+      <div class="tier">
+        <div class="amount">£25</div>
+        <div class="desc">Provides soap and sanitiser for handwashing stations for one month.</div>
+      </div>
+      <div class="tier">
+        <div class="amount">£50</div>
+        <div class="desc">Funds one day of skilled labour for facility construction.</div>
+      </div>
+      <div class="tier featured">
+        <span class="badge">Most chosen</span>
+        <div class="amount">£100</div>
+        <div class="desc">Builds one complete toilet cubicle door with lock and fixtures.</div>
+      </div>
+      <div class="tier">
+        <div class="amount">£250</div>
+        <div class="desc">Installs plumbing for two toilet units including pipes and fittings.</div>
+      </div>
+      <div class="tier">
+        <div class="amount">£500</div>
+        <div class="desc">Funds roofing materials for a small washroom block.</div>
+      </div>
+      <div class="tier" style="grid-column: span 2; background: var(--accent); color: white">
+        <span class="badge" style="background: white; color: var(--accent)">Major donor</span>
+        <div class="amount" style="color: white">£1,000+</div>
+        <div class="desc" style="color: white">Become a facility sponsor. We'll update you on construction progress and invite you to the commissioning ceremony.</div>
+      </div>
+    </div>
+
+    <!-- Donation Form -->
+    <form class="form fade-up" style="max-width: 640px; margin: 3rem auto 0" onsubmit="event.preventDefault(); alert('Thank you. Your donation platform integration would process the payment here.');">
+      <h3 style="margin-bottom: 1.5rem">Complete your donation</h3>
+
       <div class="row">
         <div><label>First name</label><input required type="text" placeholder="Your first name" /></div>
         <div><label>Last name</label><input required type="text" placeholder="Your last name" /></div>
       </div>
-      <div><label>Email</label><input required type="email" placeholder="you@example.com" /></div>
+      <div><label>Email address</label><input required type="email" placeholder="you@example.com" /></div>
+
       <div class="row">
-        <div><label>Amount (£)</label><input required type="number" min="1" placeholder="50" /></div>
-        <div><label>Frequency</label><select><option>One-time</option><option>Monthly</option><option>Quarterly</option><option>Annually</option></select></div>
+        <div>
+          <label>Donation amount (£)</label>
+          <input required type="number" min="5" placeholder="100" value="100" />
+        </div>
+        <div>
+          <label>Frequency</label>
+          <select>
+            <option>One-time donation</option>
+            <option>Monthly (join our builders' circle)</option>
+            <option>Quarterly</option>
+            <option>Annual</option>
+          </select>
+        </div>
       </div>
-      <div><label>Message (optional)</label><textarea placeholder="Anything you'd like us to know..."></textarea></div>
-      <button type="submit">Continue to secure payment</button>
-      <p style="font-size: 0.85rem; color: var(--ink-3); margin-top: 0.5rem">Your data is private. We never share donor details. Sanitopia is a UK CIC — donations may be eligible for Gift Aid where applicable.</p>
+
+      <div>
+        <label>
+          <input type="checkbox" style="margin-right: 0.5rem" />
+          I'd like to cover transaction fees so 100% of my donation goes to Ghana
+        </label>
+      </div>
+
+      <div><label>Dedication (optional)</label>
+        <textarea placeholder="Dedicate this donation in honour or memory of someone special..."></textarea>
+      </div>
+
+      <button type="submit" style="width: 100%; padding: 1rem; font-size: 1.1rem">Continue to secure payment</button>
+
+      <div style="margin-top: 1.5rem; padding: 1rem; background: var(--paper-2); border-radius: 8px">
+        <p style="font-size: 0.85rem; color: var(--ink-3); margin-bottom: 0.5rem">
+          <strong>Your donation is secure</strong><br>
+          We use encrypted payment processing. Sanitopia is a UK Community Interest Company. Donations may qualify for Gift Aid.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--ink-3)">
+          <strong>You'll receive updates</strong><br>
+          We'll send you photos and reports from the facilities your donation helps build.
+        </p>
+      </div>
     </form>
   </div>
 </section>
 
-<section class="section" style="padding-top: 0">
+<!-- ================ SPONSOR A FACILITY ================ -->
+<section class="editorial" style="background: var(--accent); color: white">
+  <div class="container">
+    <div class="editorial-grid">
+      <div class="fade-up">
+        <span class="eyebrow" style="color: white">Major giving opportunity</span>
+        <h2 style="margin: 1.2rem 0 1.5rem; color: white">Sponsor an entire facility.</h2>
+        <p style="color: white; font-size: 1.1rem; line-height: 1.7">For £5,000 to £25,000, you can fund a complete sanitation facility at a school or library in Ghana.</p>
+
+        <div style="margin-top: 2rem">
+          <h4 style="color: white; margin-bottom: 1rem">What sponsors receive:</h4>
+          <ul style="color: white; line-height: 2">
+            <li>Permanent naming rights on the facility</li>
+            <li>Regular construction updates with photos</li>
+            <li>Invitation to the commissioning ceremony in Ghana</li>
+            <li>Annual impact reports showing usage and maintenance</li>
+            <li>Recognition in all Sanitopia communications</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 2rem">
+          <a href="contact.html" class="btn btn-primary" style="background: white; color: var(--accent)">Discuss Sponsorship</a>
+        </div>
+      </div>
+      <div class="editorial-image fade-up" style="transition-delay: 0.1s">
+        <img src="https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-1.jpg" alt="Sponsored facility" loading="lazy" style="filter: brightness(0.9)" />
+        <div class="tag" style="background: white; color: var(--ink)">A sponsored facility at Nkonya SHS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ OTHER WAYS TO GIVE ================ -->
+<section class="section">
   <div class="container">
     <div class="section-head fade-up">
-      <span class="eyebrow">Other ways to help</span>
-      <h2>You don't have to donate to make a difference.</h2>
+      <span class="eyebrow">Other ways to support</span>
+      <h2>Not ready to donate? You can still help.</h2>
     </div>
     <div class="card-grid">
-      <div class="value-card fade-up"><div class="num">i.</div><h3>Buy the book</h3><p>Crushed But Not Destroyed — every copy directly funds projects.</p></div>
-      <div class="value-card fade-up" style="transition-delay: 0.1s"><div class="num">ii.</div><h3>Become a partner</h3><p>Corporate sponsorship of a whole project, named after your organisation.</p></div>
-      <div class="value-card fade-up" style="transition-delay: 0.2s"><div class="num">iii.</div><h3>Volunteer skills</h3><p>Engineering, finance, design, fieldwork, fundraising — we welcome it all.</p></div>
-      <div class="value-card fade-up" style="transition-delay: 0.3s"><div class="num">iv.</div><h3>Spread the word</h3><p>Follow us, share our work, tell one person. It compounds faster than you'd think.</p></div>
+      <div class="value-card fade-up">
+        <div class="num">1</div>
+        <h3>Buy the book</h3>
+        <p>"Crushed But Not Destroyed" — the founder's story. All proceeds fund facilities in Ghana.</p>
+        <a href="book.html" class="btn btn-ghost" style="margin-top: 1rem">Learn more</a>
+      </div>
+      <div class="value-card fade-up" style="transition-delay: 0.1s">
+        <div class="num">2</div>
+        <h3>Corporate partnership</h3>
+        <p>Your company can sponsor facilities, provide materials, or support our Ghana operations.</p>
+        <a href="partner-ghana.html" class="btn btn-ghost" style="margin-top: 1rem">Partner with us</a>
+      </div>
+      <div class="value-card fade-up" style="transition-delay: 0.2s">
+        <div class="num">3</div>
+        <h3>Share our mission</h3>
+        <p>Follow us on social media. Share our posts. Tell others about the sanitation crisis in Ghana.</p>
+        <a href="contact.html" class="btn btn-ghost" style="margin-top: 1rem">Stay connected</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ TRUST SIGNALS ================ -->
+<section class="stats" style="background: var(--paper)">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2rem">
+      <h3>Why donors trust Sanitopia</h3>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="label" style="font-weight: 600">UK registered CIC</div>
+        <div class="label" style="font-size: 0.9rem; margin-top: 0.5rem">Community Interest Company with full accountability</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay: 0.1s">
+        <div class="label" style="font-weight: 600">Ghana registered NGO</div>
+        <div class="label" style="font-size: 0.9rem; margin-top: 0.5rem">Official non-profit status in Ghana</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay: 0.2s">
+        <div class="label" style="font-weight: 600">Proven delivery</div>
+        <div class="label" style="font-size: 0.9rem; margin-top: 0.5rem">Nkonya SHS and George Padmore Library completed</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay: 0.3s">
+        <div class="label" style="font-weight: 600">100% to projects</div>
+        <div class="label" style="font-size: 0.9rem; margin-top: 0.5rem">Admin costs covered separately</div>
+      </div>
     </div>
   </div>
 </section>

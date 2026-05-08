@@ -9,28 +9,11 @@
   // Each nav item declares its match — used for active-state highlighting.
   // `match` is an array of pathname tail strings; first one is the canonical href.
   const NAV = [
-    {
-      label: "About",
-      children: [
-        { href: "about.html",   label: "About Sanitopia" },
-        { href: "founder.html", label: "Learn about Richard" },
-        { href: "team.html",    label: "Our Team" },
-        { href: "purpose.html", label: "Our Purpose" },
-        { href: "impact.html",  label: "Our Impact" },
-        { href: "values.html",  label: "Our Values" },
-        { href: "book.html",    label: "Crushed But Not Destroyed" },
-      ],
-    },
-    { href: "projects.html", label: "Our Projects" },
-    {
-      label: "Nkonya SHS",
-      children: [
-        { href: "nkonya.html",  label: "The Pilot Project" },
-        { href: "gallery.html", label: "Gallery" },
-      ],
-    },
-    { href: "news.html",    label: "News" },
-    { href: "contact.html", label: "Contact" },
+    { href: "projects.html", label: "Our Work" },
+    { href: "impact.html",  label: "Impact" },
+    { href: "partner-ghana.html", label: "Partner in Ghana" },
+    { href: "founder.html", label: "Richard's Story" },
+    { href: "news.html",    label: "Updates" },
   ];
 
   const SOCIALS = {
@@ -52,12 +35,6 @@
     return `
       <div class="topbar-inner">
         <span>UK Community Interest Company · Registered non-profit in Ghana</span>
-        <div class="topbar-socials">
-          <a href="${SOCIALS.facebook}" target="_blank" rel="noopener">Facebook</a>
-          <a href="${SOCIALS.instagram}" target="_blank" rel="noopener">Instagram</a>
-          <a href="${SOCIALS.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="${SOCIALS.tiktok}" target="_blank" rel="noopener">TikTok</a>
-        </div>
       </div>`;
   }
 
@@ -84,7 +61,10 @@
           <img class="brand-logo" src="${LOGO}" alt="Sanitopia" />
         </a>
         <nav><ul class="nav-links">${linksHTML}</ul></nav>
-        <a href="donate.html" class="btn-donate">Donate Now</a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <a href="partner-ghana.html" class="btn-ghost" style="text-decoration: none; color: var(--ink); padding: 0.5rem 1rem;">Partner With Us</a>
+          <a href="donate.html" class="btn-donate">Donate to a Facility</a>
+        </div>
         <button class="menu-toggle" aria-label="Open menu"><span></span></button>
       </div>`;
   }
@@ -107,7 +87,8 @@
     }).join("");
     return `
       ${groups}
-      <a href="donate.html" class="donate-mobile">Donate Now →</a>`;
+      <a href="partner-ghana.html" class="donate-mobile" style="background: var(--paper); color: var(--ink); margin-bottom: 1rem;">Partner With Us →</a>
+      <a href="donate.html" class="donate-mobile">Donate to a Facility →</a>`;
   }
 
   function footerHTML() {
@@ -121,24 +102,25 @@
             <p>A Community Interest Company building safe, dignified sanitation across Africa. Our mission: 10,000 projects by 2035.</p>
           </div>
           <div>
-            <h4>Explore</h4>
+            <h4>Quick Links</h4>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="projects.html">Our Projects</a></li>
-              <li><a href="nkonya.html">Nkonya SHS</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="news.html">News</a></li>
+              <li><a href="projects.html">Our Work</a></li>
+              <li><a href="impact.html">Impact</a></li>
+              <li><a href="partner-ghana.html">Partner in Ghana</a></li>
+              <li><a href="founder.html">Richard's Story</a></li>
+              <li><a href="news.html">Updates</a></li>
             </ul>
           </div>
           <div>
             <h4>Get Involved</h4>
             <ul>
-              <li><a href="donate.html">Donate</a></li>
-              <li><a href="founder.html">Founder Story</a></li>
+              <li><a href="donate.html">Donate to a Facility</a></li>
+              <li><a href="partner-ghana.html">Partner With Us</a></li>
               <li><a href="book.html">Get the Book</a></li>
-              <li><a href="values.html">Our Values</a></li>
               <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="nkonya.html">Nkonya Pilot</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
             </ul>
           </div>
           <div>
