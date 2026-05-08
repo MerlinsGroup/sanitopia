@@ -9,6 +9,7 @@
   --clay: #3F1773;
   --clay-dark: #2A0F50;
   --clay-light: #6B3CA8;
+  --accent: #3F1773; /* alias for --clay; many inline styles reference --accent */
   --forest: #1E0A3D;
   --forest-dark: #110522;
   --gold: #D4AF37;
@@ -1260,3 +1261,47 @@ footer.site-footer {
 .section-head .eyebrow { justify-content: center; }
 .section-head .eyebrow::before { display: none; }
 .section-head h2 { margin-top: 1rem; }
+
+/* ============ CONTRAST RESCUE ============
+   Several blocks (.quote-block, .stats, .cta-strip) default to a dark bg with
+   paper-coloured text. When a page overrides their background to a paper/cream
+   inline style, the text becomes invisible. Re-skin those overrides dark. */
+
+/* Quote block on cream */
+.quote-block[style*="paper"] { color: var(--ink); }
+.quote-block[style*="paper"] .quote-text { color: var(--clay); }
+.quote-block[style*="paper"] .quote-attr-name { color: var(--ink); }
+.quote-block[style*="paper"] .quote-attr-title { color: var(--ink-3); }
+.quote-block[style*="paper"]::before { color: var(--clay); opacity: 0.10; }
+.quote-block[style*="paper"] .btn-ghost {
+  background: rgba(63, 23, 115, 0.06);
+  color: var(--clay);
+  border-color: rgba(63, 23, 115, 0.35);
+}
+.quote-block[style*="paper"] .btn-ghost:hover {
+  background: var(--clay);
+  color: var(--paper);
+  border-color: var(--clay);
+}
+
+/* Stats strip on cream */
+.stats[style*="paper"] { color: var(--ink); }
+.stats[style*="paper"] .stat-item .label { color: var(--ink-2); }
+.stats[style*="paper"] .stat-item .num small { color: var(--ink); }
+
+/* CTA strip on cream (rare, but cover it) */
+.cta-strip[style*="paper"] { color: var(--ink); }
+.cta-strip[style*="paper"] h2,
+.cta-strip[style*="paper"] .cta-inner h2 { color: var(--ink); }
+.cta-strip[style*="paper"] .cta-inner p { color: var(--ink-2); }
+.cta-strip[style*="paper"] .cta-actions .btn-secondary {
+  color: var(--clay);
+  border-color: var(--clay);
+}
+.cta-strip[style*="paper"] .cta-actions .btn-secondary:hover {
+  background: var(--clay);
+  color: var(--paper);
+}
+
+/* SDG card .green variant when explicitly placed on cream */
+.sdg-card.green[style*="paper"] { background: var(--paper-2); color: var(--ink); }
