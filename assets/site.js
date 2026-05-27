@@ -63,7 +63,7 @@
         <nav><ul class="nav-links">${linksHTML}</ul></nav>
         <div style="display: flex; gap: 1rem; align-items: center;">
           <a href="partner-ghana.html" class="btn-ghost" style="text-decoration: none; color: var(--ink); padding: 0.5rem 1rem;">Partner With Us</a>
-          <a href="donate.html" class="btn-donate">Donate to a Facility</a>
+          <a href="contact.html" class="btn-donate">Contact</a>
         </div>
         <button class="menu-toggle" aria-label="Open menu"><span></span></button>
       </div>`;
@@ -88,7 +88,7 @@
     return `
       ${groups}
       <a href="partner-ghana.html" class="donate-mobile" style="background: var(--paper); color: var(--ink); margin-bottom: 1rem;">Partner With Us →</a>
-      <a href="donate.html" class="donate-mobile">Donate to a Facility →</a>`;
+      <a href="contact.html" class="donate-mobile">Contact →</a>`;
   }
 
   function footerHTML() {
@@ -115,7 +115,7 @@
           <div>
             <h4>Get Involved</h4>
             <ul>
-              <li><a href="donate.html">Donate to a Facility</a></li>
+              <li><a href="contact.html">Contact</a></li>
               <li><a href="partner-ghana.html">Partner With Us</a></li>
               <li><a href="book.html">Get the Book</a></li>
               <li><a href="contact.html">Contact Us</a></li>
@@ -173,6 +173,22 @@
     if (nav) nav.tagName.toLowerCase() === "header" ? null : null; // already <header> per template
     inject("site-footer", ["site-footer"], footerHTML());
     inject("site-lightbox", ["lightbox"], lightboxHTML());
+    injectMobileNavPill();
+  }
+
+  // Compact "Contact" pill shown in the navbar on mobile (between brand and hamburger).
+  // CSS (.nav-mobile-donate) handles the responsive show/hide; this just ensures it exists.
+  function injectMobileNavPill() {
+    const navInner = document.querySelector('#site-nav .nav-inner');
+    const toggle = navInner && navInner.querySelector('.menu-toggle');
+    if (!navInner || !toggle) return;
+    if (navInner.querySelector('.nav-mobile-donate')) return;
+    const pill = document.createElement('a');
+    pill.href = 'contact.html';
+    pill.className = 'nav-mobile-donate';
+    pill.textContent = 'Contact';
+    pill.setAttribute('aria-label', 'Contact Sanitopia');
+    navInner.insertBefore(pill, toggle);
   }
 
   // ------- Mobile menu toggle -------

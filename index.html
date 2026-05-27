@@ -14,39 +14,6 @@
 <style>
   /* ============ INDEX-SCOPED OVERRIDES (home page only) ============ */
 
-  /* MOBILE NAVBAR · hide desktop CTA cluster, show a compact "Donate" pill */
-  @media (max-width: 980px) {
-    #site-nav .nav-inner > div { display: none !important; }
-    #site-nav .nav-inner {
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1.2rem;
-    }
-  }
-  .nav-mobile-donate {
-    display: none;
-    align-items: center;
-    background: linear-gradient(135deg, var(--clay) 0%, var(--clay-dark) 100%);
-    color: var(--paper);
-    text-decoration: none;
-    padding: 0.55rem 1.2rem;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    box-shadow: 0 6px 18px rgba(63,23,115,0.35), 0 0 0 1px rgba(212,175,55,0.4);
-    white-space: nowrap;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .nav-mobile-donate:hover, .nav-mobile-donate:focus-visible {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 24px rgba(63,23,115,0.45), 0 0 0 1px var(--gold);
-  }
-  @media (max-width: 980px) {
-    .nav-mobile-donate { display: inline-flex; }
-  }
-
   /* MOBILE HERO · content lifted into upper third, generous internal rhythm */
   @media (max-width: 720px) {
     .hero { min-height: clamp(620px, 82vh, 820px); }
@@ -85,6 +52,9 @@
     .hero-cta-row { gap: 1.2rem; }
     .hero-cta-row .btn { padding: 1rem 1.2rem; font-size: 0.95rem; }
   }
+
+  /* PROOF STRIP · ensure full-contrast light text over the purple band */
+  .stats.proof-strip .stat-item .label { color: var(--paper); opacity: 1; }
 
   /* PROOF STRIP · give it real breathing room on mobile, stack to one column on tight screens */
   @media (max-width: 720px) {
@@ -664,7 +634,28 @@
 <section class="hero" aria-label="Sanitopia hero" data-hero-carousel>
   <div class="hero-slides">
 
-    <!-- Slide 1 · The motive: if you have a daughter -->
+    <!-- Slide 1 · Ghana factory · Africa vision (shown first) -->
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image: url('https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-5.jpg')"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">Vision · Ghana to Africa</span>
+              <h1>A Ghana factory. <span class="accent">Dignity across a continent.</span></h1>
+              <p class="hero-lede">Scaling from one school at a time to a manufacturing base for women and girls across Africa.</p>
+              <div class="hero-cta-row">
+                <a href="#factory" class="btn btn-gold">Read the Vision</a>
+                <a href="https://www.linkedin.com/company/sanitopia-projects/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 · The motive: if you have a daughter -->
     <div class="hero-slide">
       <div class="hero-slide-bg" style="background-image: url('https://sanitopiaprojects.org/wp-content/uploads/2025/08/Magbe-shot-it-204-of-276.jpg')"></div>
       <div class="hero-slide-overlay"></div>
@@ -676,7 +667,7 @@
               <h1>She loses a week of school. <span class="accent">Every month.</span></h1>
               <p class="hero-lede">Across Africa, millions of girls do. Their schools have no working toilet, and nobody will talk about it.</p>
               <div class="hero-cta-row">
-                <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
+                <a href="contact.html" class="btn btn-gold">Contact</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
               </div>
             </div>
@@ -685,7 +676,7 @@
       </div>
     </div>
 
-    <!-- Slide 2 · The silenced issue -->
+    <!-- Slide 3 · The silenced issue -->
     <div class="hero-slide">
       <div class="hero-slide-bg" style="background-image: url('https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-3.jpg')"></div>
       <div class="hero-slide-overlay"></div>
@@ -697,7 +688,7 @@
               <h1>Africa's silent crisis. <span class="accent">We're making noise.</span></h1>
               <p class="hero-lede">Sanitation. Periods. Underwear. The things nobody would discuss. Sanitopia is.</p>
               <div class="hero-cta-row">
-                <a href="donate.html" class="btn btn-gold">Donate to a Facility</a>
+                <a href="contact.html" class="btn btn-gold">Contact</a>
                 <a href="partner-ghana.html" class="btn btn-ghost">Partner With Us in Ghana</a>
               </div>
             </div>
@@ -706,7 +697,7 @@
       </div>
     </div>
 
-    <!-- Slide 3 · Free Underwear programme -->
+    <!-- Slide 4 · Free Underwear programme -->
     <div class="hero-slide">
       <div class="hero-slide-bg" style="background-image: url('https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-1.jpg')"></div>
       <div class="hero-slide-overlay"></div>
@@ -727,7 +718,7 @@
       </div>
     </div>
 
-    <!-- Slide 4 · Subscribe: 45-day impact -->
+    <!-- Slide 5 · Subscribe: 45-day impact -->
     <div class="hero-slide">
       <div class="hero-slide-bg" style="background-image: url('https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-8.jpg')"></div>
       <div class="hero-slide-overlay"></div>
@@ -739,29 +730,8 @@
               <h1>45 days from your gift to a <span class="accent">real facility</span>.</h1>
               <p class="hero-lede">Materials. Labour. Water. Dignity products. Photos of the girls it serves, straight to your inbox.</p>
               <div class="hero-cta-row">
-                <a href="donate.html" class="btn btn-gold">Start Monthly Giving</a>
+                <a href="contact.html" class="btn btn-gold">Contact</a>
                 <a href="#timeline-45" class="btn btn-ghost">See the 45-Day Journey</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 5 · Ghana factory · Africa vision -->
-    <div class="hero-slide">
-      <div class="hero-slide-bg" style="background-image: url('https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-5.jpg')"></div>
-      <div class="hero-slide-overlay"></div>
-      <div class="hero-slide-content">
-        <div class="container">
-          <div class="hero-grid">
-            <div>
-              <span class="eyebrow">Vision · Ghana to Africa</span>
-              <h1>A Ghana factory. <span class="accent">Dignity across a continent.</span></h1>
-              <p class="hero-lede">Scaling from one school at a time to a manufacturing base for women and girls across Africa.</p>
-              <div class="hero-cta-row">
-                <a href="#factory" class="btn btn-gold">Read the Vision</a>
-                <a href="https://www.linkedin.com/company/sanitopia-projects/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on LinkedIn</a>
               </div>
             </div>
           </div>
@@ -958,7 +928,7 @@
           <span>Scaling Africa-wide</span>
         </div>
         <div class="hero-cta-row">
-          <a href="donate.html" class="btn btn-gold">Fund a Bundle</a>
+          <a href="contact.html" class="btn btn-gold">Contact</a>
           <a href="partner-ghana.html" class="btn btn-secondary">Distribute With Us</a>
         </div>
       </div>
@@ -1069,7 +1039,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 2rem">
-      <a href="donate.html" class="btn btn-gold">Donate Now</a>
+      <a href="contact.html" class="btn btn-gold">Contact</a>
     </div>
   </div>
 </section>
@@ -1220,7 +1190,7 @@
         <p>Every facility serves thousands. Every partnership creates change.</p>
       </div>
       <div class="cta-actions fade-up" style="transition-delay: 0.1s">
-        <a href="donate.html" class="btn btn-primary">Donate to a Facility</a>
+        <a href="contact.html" class="btn btn-primary">Contact</a>
         <a href="partner-ghana.html" class="btn btn-secondary">Partner in Ghana</a>
       </div>
     </div>
@@ -1233,22 +1203,6 @@
 <div id="site-lightbox"></div>
 
 <script src="assets/site.js"></script>
-<script>
-  // Inject a compact "Donate" pill into the mobile navbar (between brand and hamburger).
-  // CSS handles the responsive show/hide; this just ensures the element exists.
-  (function () {
-    const navInner = document.querySelector('#site-nav .nav-inner');
-    const toggle = navInner && navInner.querySelector('.menu-toggle');
-    if (!navInner || !toggle) return;
-    if (navInner.querySelector('.nav-mobile-donate')) return;
-    const pill = document.createElement('a');
-    pill.href = 'donate.html';
-    pill.className = 'nav-mobile-donate';
-    pill.textContent = 'Donate';
-    pill.setAttribute('aria-label', 'Donate to a facility');
-    navInner.insertBefore(pill, toggle);
-  })();
-</script>
 <script>
   // Subtle image parallax · drifts elements with data-parallax based on viewport position.
   // Speed factor in the attribute (e.g. data-parallax="0.12"); reduced-motion users get a no-op.

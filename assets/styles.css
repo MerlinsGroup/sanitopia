@@ -382,7 +382,7 @@ header.nav.is-over-hero .menu-toggle span::after { background: var(--paper); }
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(20,9,31,0.55) 0%, rgba(20,9,31,0.35) 40%, rgba(20,9,31,0.85) 100%),
+    linear-gradient(180deg, rgba(20,9,31,0.62) 0%, rgba(20,9,31,0.50) 38%, rgba(20,9,31,0.92) 100%),
     radial-gradient(120% 80% at 80% 20%, rgba(63,23,115,0.45) 0%, transparent 60%),
     radial-gradient(80% 60% at 10% 90%, rgba(212,175,55,0.18) 0%, transparent 60%);
 }
@@ -422,6 +422,7 @@ header.nav.is-over-hero .menu-toggle span::after { background: var(--paper); }
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.5);
 }
 .hero .eyebrow::before { background: var(--gold); width: 2.2rem; }
 .hero h1 {
@@ -444,11 +445,12 @@ header.nav.is-over-hero .menu-toggle span::after { background: var(--paper); }
 }
 .hero-lede {
   font-size: 1.15rem;
-  color: rgba(250,246,238,0.85);
+  color: rgba(250,246,238,0.94);
   margin: 1.8rem 0 2.4rem;
   max-width: 38rem;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.45);
 }
 .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 .hero-meta {
@@ -1199,6 +1201,40 @@ footer.site-footer {
   font-size: 1.4rem;
 }
 
+/* ============ MOBILE NAVBAR PILL ============
+   Shared across every page: on mobile the desktop CTA cluster is hidden and a
+   compact "Contact" pill (.nav-mobile-donate, injected by site.js) appears
+   between the brand and the hamburger. */
+.nav-mobile-donate {
+  display: none;
+  align-items: center;
+  background: linear-gradient(135deg, var(--clay) 0%, var(--clay-dark) 100%);
+  color: var(--paper);
+  text-decoration: none;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px rgba(63,23,115,0.35), 0 0 0 1px rgba(212,175,55,0.4);
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.nav-mobile-donate:hover, .nav-mobile-donate:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(63,23,115,0.45), 0 0 0 1px var(--gold);
+}
+@media (max-width: 980px) {
+  #site-nav .nav-inner > div { display: none !important; }
+  #site-nav .nav-inner {
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.2rem;
+  }
+  .nav-mobile-donate { display: inline-flex; }
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 980px) {
   .hero-slide-content .hero-grid, .editorial-grid, .feature-card, .cta-inner, .purpose-head, .book-grid, .contact-grid {
@@ -1246,6 +1282,11 @@ footer.site-footer {
   .hero-controls { bottom: 1.4rem; gap: 0.8rem; }
   .hero-dot { width: 24px; }
   .hero-dot.active { width: 56px; }
+
+  /* MOBILE TRIM · drop secondary/supporting copy so phones get the punchy version.
+     Tag verbose paragraphs with .mob-hide; headlines, key one-liners, stats and
+     buttons stay. Desktop/tablet (>600px) is completely unaffected. */
+  .mob-hide { display: none !important; }
 }
 
 /* ============ UTILITY ============ */
