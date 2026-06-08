@@ -9,11 +9,12 @@
   // Each nav item declares its match — used for active-state highlighting.
   // `match` is an array of pathname tail strings; first one is the canonical href.
   const NAV = [
-    { href: "projects.html", label: "Our Work" },
-    { href: "impact.html",  label: "Impact" },
-    { href: "partner-ghana.html", label: "Partner in Ghana" },
-    { href: "founder.html", label: "Richard's Story" },
-    { href: "news.html",    label: "Updates" },
+    { href: "projects", label: "Our Work" },
+    { href: "impact",  label: "Impact" },
+    { href: "partner-ghana", label: "Partner in Ghana" },
+    { href: "founder", label: "Richard's Story" },
+    { href: "team",    label: "Team" },
+    { href: "news",    label: "Updates" },
   ];
 
   const SOCIALS = {
@@ -25,8 +26,9 @@
 
   // Currently active page (just the file name).
   function currentPage() {
-    let p = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-    if (p === "" || p === "/") p = "index.html";
+    let p = (location.pathname.split("/").pop() || "index").toLowerCase();
+    p = p.replace(/\.html$/, "");           // tolerate old .html URLs
+    if (p === "" || p === "/") p = "index";  // domain root = home
     return p;
   }
 
@@ -57,13 +59,13 @@
 
     return `
       <div class="nav-inner">
-        <a href="index.html" class="brand" aria-label="Sanitopia — home">
+        <a href="/" class="brand" aria-label="Sanitopia — home">
           <img class="brand-logo" src="${LOGO}" alt="Sanitopia" />
         </a>
         <nav><ul class="nav-links">${linksHTML}</ul></nav>
         <div style="display: flex; gap: 1rem; align-items: center;">
-          <a href="partner-ghana.html" class="btn-ghost" style="text-decoration: none; color: var(--ink); padding: 0.5rem 1rem;">Partner With Us</a>
-          <a href="contact.html" class="btn-donate">Contact</a>
+          <a href="partner-ghana" class="btn-ghost" style="text-decoration: none; color: var(--ink); padding: 0.5rem 1rem;">Partner With Us</a>
+          <a href="contact" class="btn-donate">Contact</a>
         </div>
         <button class="menu-toggle" aria-label="Open menu"><span></span></button>
       </div>`;
@@ -87,8 +89,8 @@
     }).join("");
     return `
       ${groups}
-      <a href="partner-ghana.html" class="donate-mobile" style="background: var(--paper); color: var(--ink); margin-bottom: 1rem;">Partner With Us →</a>
-      <a href="contact.html" class="donate-mobile">Contact →</a>`;
+      <a href="partner-ghana" class="donate-mobile" style="background: var(--paper); color: var(--ink); margin-bottom: 1rem;">Partner With Us →</a>
+      <a href="contact" class="donate-mobile">Contact →</a>`;
   }
 
   function footerHTML() {
@@ -96,7 +98,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" class="brand" style="color: var(--paper)">
+            <a href="/" class="brand" style="color: var(--paper)">
               <img class="brand-logo" src="${LOGO}" alt="Sanitopia" />
             </a>
             <p>A Community Interest Company building safe, dignified sanitation across Africa. Our mission: 10,000 projects by 2035.</p>
@@ -104,23 +106,23 @@
           <div>
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="projects.html">Our Work</a></li>
-              <li><a href="impact.html">Impact</a></li>
-              <li><a href="partner-ghana.html">Partner in Ghana</a></li>
-              <li><a href="founder.html">Richard's Story</a></li>
-              <li><a href="news.html">Updates</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="projects">Our Work</a></li>
+              <li><a href="impact">Impact</a></li>
+              <li><a href="partner-ghana">Partner in Ghana</a></li>
+              <li><a href="founder">Richard's Story</a></li>
+              <li><a href="team">Team</a></li>
+              <li><a href="news">Updates</a></li>
             </ul>
           </div>
           <div>
             <h4>Get Involved</h4>
             <ul>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="partner-ghana.html">Partner With Us</a></li>
-              <li><a href="book.html">Get the Book</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="nkonya.html">Nkonya Pilot</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="partner-ghana">Partner With Us</a></li>
+              <li><a href="book">Get the Book</a></li>
+              <li><a href="contact">Contact Us</a></li>
+              <li><a href="nkonya">Nkonya Pilot</a></li>
+              <li><a href="gallery">Gallery</a></li>
             </ul>
           </div>
           <div>
@@ -141,10 +143,10 @@
         <div class="footer-bar">
           <div>© 2025 Sanitopia. All rights reserved.</div>
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-            <a href="cookies.html">Cookies</a>
-            <a href="slavery.html">Anti-Modern Slavery</a>
+            <a href="privacy">Privacy</a>
+            <a href="terms">Terms</a>
+            <a href="cookies">Cookies</a>
+            <a href="slavery">Anti-Modern Slavery</a>
           </div>
         </div>
       </div>`;
@@ -173,22 +175,6 @@
     if (nav) nav.tagName.toLowerCase() === "header" ? null : null; // already <header> per template
     inject("site-footer", ["site-footer"], footerHTML());
     inject("site-lightbox", ["lightbox"], lightboxHTML());
-    injectMobileNavPill();
-  }
-
-  // Compact "Contact" pill shown in the navbar on mobile (between brand and hamburger).
-  // CSS (.nav-mobile-donate) handles the responsive show/hide; this just ensures it exists.
-  function injectMobileNavPill() {
-    const navInner = document.querySelector('#site-nav .nav-inner');
-    const toggle = navInner && navInner.querySelector('.menu-toggle');
-    if (!navInner || !toggle) return;
-    if (navInner.querySelector('.nav-mobile-donate')) return;
-    const pill = document.createElement('a');
-    pill.href = 'contact.html';
-    pill.className = 'nav-mobile-donate';
-    pill.textContent = 'Contact';
-    pill.setAttribute('aria-label', 'Contact Sanitopia');
-    navInner.insertBefore(pill, toggle);
   }
 
   // ------- Mobile menu toggle -------

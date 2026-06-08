@@ -11,6 +11,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/styles.css" />
+<style>
+  /* On mobile, drop the sticky portrait so it doesn't overlap the story column. */
+  @media (max-width: 980px) {
+    .editorial-image[style*="sticky"] { position: static !important; top: auto !important; }
+  }
+</style>
 </head>
 <body>
 
@@ -47,7 +53,7 @@
 <!-- ================ THE STORY ================ -->
 <section class="section">
   <div class="container">
-    <div class="editorial-grid" style="grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: flex-start">
+    <div class="editorial-grid" style="align-items: flex-start">
       <div class="editorial-image fade-up" style="position: sticky; top: 6rem">
         <img src="https://sanitopiaprojects.org/wp-content/uploads/2025/02/Completion-9.jpg" alt="Richard Kojo Acheampong" loading="lazy" />
         <div class="tag">At Nkonya SHS, 2025</div>
@@ -60,11 +66,11 @@
           Richard Kojo Acheampong attended Nkonya Senior High School in Ghana's Oti Region. So did his wife, Joan. The school gave them their foundation — but when they returned years later, they found the facilities in crisis.
         </p>
 
-        <p style="color: var(--ink-2); margin-bottom: 1.4rem">
+        <p class="mob-hide" style="color: var(--ink-2); margin-bottom: 1.4rem">
           Richard had moved to the UK in 1998. A severe car accident resulted in the amputation of his foot. While still in hospital, he faced deportation threats. Unable to find conventional employment, he started his first business in 2002. Today, his ventures employ hundreds in the UK economy.
         </p>
 
-        <p style="color: var(--ink-2); margin-bottom: 1.4rem">
+        <p class="mob-hide" style="color: var(--ink-2); margin-bottom: 1.4rem">
           In 2016, he qualified as a dual lawyer — Supreme Court of Ghana and Senior Courts of England and Wales. Success in the UK, but his heart remained in Ghana.
         </p>
 
@@ -74,7 +80,7 @@
           Visiting Nkonya SHS with Joan, they saw the abandoned washrooms. The girls' facility hadn't worked for over a decade. A 25-unit block stood half-finished. Students were suffering in silence.
         </p>
 
-        <p style="color: var(--ink-2); margin-bottom: 1.4rem">
+        <p class="mob-hide" style="color: var(--ink-2); margin-bottom: 1.4rem">
           Richard and Joan decided to act. Using personal savings and proceeds from Richard's book "Crushed But Not Destroyed", they funded the reconstruction. What started as a $15,000 project grew to over $30,000 as they added a roofed walkway and proper water systems.
         </p>
 
@@ -84,7 +90,7 @@
 
         <h3 style="margin: 2.5rem 0 1rem">Why Sanitopia exists</h3>
 
-        <p style="color: var(--ink-2); margin-bottom: 1.4rem">
+        <p class="mob-hide" style="color: var(--ink-2); margin-bottom: 1.4rem">
           That first project at Nkonya wasn't enough. Richard saw the same problem at schools across Ghana. Libraries without toilets. Health centres with broken facilities. Communities suffering needlessly.
         </p>
 
@@ -93,7 +99,7 @@
         </p>
 
         <p style="color: var(--ink-2); margin-bottom: 1.4rem">
-          Now, with partnerships like Ghana Library Authority secured and the May 2025 expansion mission ahead, Sanitopia is scaling Richard's vision: 10,000 sanitation projects across Africa by 2035.
+          Now, with partnerships like Ghana Library Authority secured and the May 2026 expansion mission ahead, Sanitopia is scaling Richard's vision: 10,000 sanitation projects across Africa by 2035.
         </p>
       </div>
     </div>
@@ -136,9 +142,9 @@
         <h2 style="margin: 1.2rem 0 1.5rem">"Crushed But Not Destroyed"</h2>
         <p class="lede">Richard's memoir tells the full story — from Ghana to the UK, through trauma and triumph, to founding Sanitopia.</p>
 
-        <p style="margin-top: 1.5rem">All proceeds from the book fund sanitation projects in Ghana. Every copy sold builds towards a toilet, a handwashing station, a healthier school.</p>
+        <p class="mob-hide" style="margin-top: 1.5rem">All proceeds from the book fund sanitation projects in Ghana. Every copy sold builds towards a toilet, a handwashing station, a healthier school.</p>
 
-        <div style="margin-top: 2rem">
+        <div class="mob-hide" style="margin-top: 2rem">
           <h4 style="margin-bottom: 1rem">What readers say:</h4>
           <p style="font-style: italic; color: var(--ink-3); margin-bottom: 1rem">
             "A powerful story of resilience and giving back. Richard's journey from adversity to advocacy is inspiring."
@@ -148,7 +154,7 @@
           </p>
         </div>
 
-        <a href="book.html" class="btn btn-secondary mt-2">Get the Book</a>
+        <a href="book" class="btn btn-secondary mt-2">Get the Book</a>
       </div>
       <div class="editorial-image fade-up" style="transition-delay: 0.1s">
         <img src="https://sanitopiaprojects.org/wp-content/uploads/2025/08/Magbe-shot-it-204-of-276.jpg" alt="Crushed But Not Destroyed book" loading="lazy" />
@@ -192,12 +198,12 @@
     <div class="cta-inner">
       <div class="fade-up">
         <span class="eyebrow" style="color: var(--paper)">Connect with Richard</span>
-        <h2 style="margin-top: 1rem; color: white">Meet during the May 2025 Ghana mission.</h2>
+        <h2 style="margin-top: 1rem; color: white">Meet during the May 2026 Ghana mission.</h2>
         <p style="color: white">Richard is travelling to Ghana to meet partners, visit sites, and expand Sanitopia's work. Book a meeting to discuss how you can be part of the mission.</p>
       </div>
       <div class="cta-actions fade-up" style="transition-delay: 0.1s">
-        <a href="partner-ghana.html" class="btn btn-primary" style="background: white; color: var(--accent)">Book a Meeting</a>
-        <a href="contact.html" class="btn btn-secondary" style="border-color: white; color: white">General Contact</a>
+        <a href="partner-ghana" class="btn btn-primary" style="background: white; color: var(--accent)">Book a Meeting</a>
+        <a href="contact" class="btn btn-secondary" style="border-color: white; color: white">General Contact</a>
       </div>
     </div>
   </div>
