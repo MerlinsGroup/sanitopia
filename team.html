@@ -3,14 +3,57 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Our Team — Sanitopia</title>
-<meta name="description" content="The people behind the promise — a small, distributed team of builders, lawyers, designers and community organisers." />
+<title>Board of Directors — Sanitopia</title>
+<meta name="description" content="Sanitopia is led by a board of directors with deep experience in law, international development, public health, procurement, technology and governance." />
 <link rel="icon" type="image/png" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-192x192.png" />
 <link rel="apple-touch-icon" href="https://sanitopiaprojects.org/wp-content/uploads/2020/04/cropped-Sanitopia-Logo-black-png-1-2-180x180.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/styles.css" />
+<style>
+  /* Director profile rows: portrait beside a short biography. */
+  .director {
+    display: grid;
+    grid-template-columns: 22rem 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .director:first-of-type { border-top: 0; }
+  .director .portrait {
+    aspect-ratio: 3/4;
+    border-radius: 6px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--paper-2), var(--clay));
+  }
+  .director .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .director .portrait.monogram {
+    display: grid;
+    place-items: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 4.5rem;
+    color: var(--paper);
+  }
+  .director .name { font-family: var(--display); font-size: 1.9rem; line-height: 1.2; }
+  .director .role {
+    font-size: 0.8rem;
+    color: var(--ink-3);
+    margin-top: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .director .bio { margin-top: 1.6rem; }
+  .director .bio p { color: var(--ink-2); margin-bottom: 1.1rem; }
+  .director .bio p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 900px) {
+    .director { grid-template-columns: 1fr; gap: 1.8rem; padding: 2.5rem 0; }
+    .director .portrait { max-width: 17rem; }
+  }
+</style>
 </head>
 <body>
 
@@ -23,72 +66,134 @@
 <section class="page-head">
   <div class="container">
     <div class="crumb">About / Our Team</div>
-    <h1 class="fade-up">The people behind <em>the promise.</em></h1>
-    <p class="lede fade-up" style="transition-delay: 0.1s">A small, distributed team of builders, lawyers, designers and community organisers — bound together by the belief that everyone deserves a clean, safe place to go.</p>
+    <h1 class="fade-up">Our board <em>of directors.</em></h1>
+    <p class="lede fade-up" style="transition-delay: 0.1s">Good governance and accountability sit at the centre of how Sanitopia operates. The organisation is led by a diverse board of directors with extensive lived experience and cultural sensitivity to the solutions we deliver in communities across Africa.</p>
   </div>
 </section>
 
+<!-- ================ FOUNDER ================ -->
 <section class="section" style="padding-bottom: 0">
-  <div class="container" style="max-width: 50rem; text-align: center">
-    <p class="fade-up" style="color: var(--ink-2); font-size: 1.15rem">At Sanitopia we are more than builders. We are changemakers working to bring safe, dignified sanitation to communities across Africa, one project at a time.</p>
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Founder</span>
+      <h2>The person who started it.</h2>
+    </div>
+
+    <div class="director fade-up">
+      <div class="portrait">
+        <img src="assets/team/richard-acheampong.jpg" alt="Richard Kojo Acheampong, Founder and Director of Sanitopia" loading="lazy" />
+      </div>
+      <div>
+        <div class="name">Mr Richard Kojo Acheampong</div>
+        <div class="role">Founder &amp; Director</div>
+        <div class="bio">
+          <p>Richard Kojo Acheampong is a father, lawyer, entrepreneur, author and philanthropist whose work spans both the United Kingdom and Ghana. Originally from Ghana, he relocated to the UK in 1998, where he faced profound challenges including a life-changing car accident that led to the amputation of one foot, and repeated threats of deportation during his recovery. Those experiences shaped his determination to succeed against the odds.</p>
+          <p>Facing barriers in the job market, Richard launched his first business in 2002 and went on to found multiple ventures that today employ hundreds of people across the UK. His entrepreneurial record is matched by his legal career: he qualified as a lawyer in 2016 and holds dual credentials in Ghana and the UK, allowing him to advocate for others facing similar struggles.</p>
+          <p>Beyond his professional achievements, Richard is committed to philanthropy and community upliftment, supporting initiatives that improve lives in both the United Kingdom and Ghana. His memoir, <em>Crushed But Not Destroyed</em>, gives a full account of his journey, and its proceeds funded Sanitopia's first project at Nkonya Senior High School.</p>
+        </div>
+        <a href="founder" class="btn btn-ghost" style="margin-top: 1.8rem">Read Richard's full story</a>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ================ BOARD MEMBERS ================ -->
 <section class="section">
   <div class="container">
-    <div class="card-grid">
-      <div class="team-card fade-up">
-        <div class="photo">R</div>
-        <div class="info">
-          <div class="name">Richard K. Acheampong</div>
-          <div class="role">Founder & Director</div>
-          <p class="bio" style="color: var(--ink-2); margin-top: 1rem; font-size: 0.95rem">A dual-qualified lawyer of the Supreme Court of Ghana and the Senior Courts of England and Wales, Richard founded Sanitopia in 2025 after rebuilding the washrooms at his old school in Nkonya. He has personally invested over £44,000 into the mission and oversees every project from start to finish.</p>
-        </div>
+    <div class="section-head fade-up">
+      <span class="eyebrow">Board members</span>
+      <h2>Experience where it counts.</h2>
+    </div>
+
+    <div class="director fade-up">
+      <div class="portrait">
+        <img src="assets/team/kankson-kpentey.jpg" alt="Dr Kankson Kpentey, Director of Sanitopia" loading="lazy" />
       </div>
-      <div class="team-card fade-up" style="transition-delay: 0.05s">
-        <div class="photo">J</div>
-        <div class="info">
-          <div class="name">Joan Asare-Acheampong</div>
-          <div class="role">Co-Founder & Programmes</div>
-          <p class="bio" style="color: var(--ink-2); margin-top: 1rem; font-size: 0.95rem">Joan studied at Nkonya Senior High School alongside Richard. She co-leads Sanitopia's programmes, shaping how every project serves girls, teachers and the wider community.</p>
-        </div>
-      </div>
-      <div class="team-card fade-up" style="transition-delay: 0.1s">
-        <div class="photo">A</div>
-        <div class="info">
-          <div class="name">Advisory Board</div>
-          <div class="role">Strategy & Governance</div>
-          <p class="bio" style="color: var(--ink-2); margin-top: 1rem; font-size: 0.95rem">Our advisory board guides strategy and governance, running the gate reviews and financial controls that keep every project accountable, transparent and built to last.</p>
-        </div>
-      </div>
-      <div class="team-card fade-up" style="transition-delay: 0.15s">
-        <div class="photo">G</div>
-        <div class="info">
-          <div class="name">Ghana Operations</div>
-          <div class="role">Project Delivery</div>
-          <p class="bio" style="color: var(--ink-2); margin-top: 1rem; font-size: 0.95rem">Our Ghana team manages construction on the ground, from site surveys and budgets through to commissioning, working hand in hand with local communities.</p>
-        </div>
-      </div>
-      <div class="team-card fade-up" style="transition-delay: 0.2s">
-        <div class="photo">L</div>
-        <div class="info">
-          <div class="name">Legal Counsel</div>
-          <div class="role">Compliance & CIC Affairs</div>
-          <p class="bio" style="color: var(--ink-2); margin-top: 1rem; font-size: 0.95rem">Our legal counsel keeps Sanitopia compliant across two jurisdictions, handling our UK Community Interest Company and our registered non-profit in Ghana.</p>
-        </div>
-      </div>
-      <div class="team-card fade-up" style="transition-delay: 0.25s">
-        <div class="photo">C</div>
-        <div class="info">
-          <div class="name">Community Liaison</div>
-          <div class="role">Stakeholder Engagement</div>
-          <p class="bio" style="color: var(--ink-2); margin-top: 1rem; font-size: 0.95rem">Our community liaison brings schools, families and partners into every decision, making sure each facility reflects the real needs of the people who use it.</p>
+      <div>
+        <div class="name">Dr Kankson Kpentey, Ph.D.</div>
+        <div class="role">Business &amp; Supply Chain Leadership</div>
+        <div class="bio">
+          <p>Dr Kankson Kpentey is a business leader and executive holding a Ph.D. in Business Administration. He serves as Executive Director of South-Western Pacific International Limited and as IT &amp; Services Sourcing Lead at Stanbic Bank Ghana Ltd, a member of the Standard Bank Group, bringing more than 22 years of experience across banking, telecommunications, manufacturing, power, energy and education.</p>
+          <p>His career includes senior appointments as Head of Procurement at Fidelity Bank and Supply Chain Consultant at Vodafone Ghana. He also teaches on master's programmes at GIMPA, Kwame Nkrumah University of Science &amp; Technology and Coventry University via Ghana Communications Technology University, where he serves as an external examiner.</p>
+          <p>He is a member of the Chartered Institute of Procurement &amp; Supply, the Chartered Institute of Logistics and Transport and the Ghana Institute of Procurement and Supply. His recognitions include the 2022 Coventry University Top 30 Achievers Award and the Standard Bank Group Mark of Excellence.</p>
         </div>
       </div>
     </div>
-    <div class="center mt-3 fade-up">
-      <p style="color: var(--ink-3); max-width: 36rem; margin: 0 auto 1.5rem">We're growing. If you'd like to contribute your skills — engineering, finance, fieldwork, fundraising — we'd love to hear from you.</p>
-      <a href="contact" class="btn btn-primary">Get in touch</a>
+
+    <div class="director fade-up">
+      <div class="portrait">
+        <img src="assets/team/archibald-gumiro.jpg" alt="Dr Archibald Tapuwa James Gumiro, Director of Sanitopia" loading="lazy" />
+      </div>
+      <div>
+        <div class="name">Dr Archibald Tapuwa James Gumiro</div>
+        <div class="role">International Development &amp; Public Health</div>
+        <div class="bio">
+          <p>Dr Archibald Tapuwa James Gumiro is an expert in international and economic development. He began his career as a research fellow at the Southern Africa Foundation for Economic Research, where he built his understanding of the region's economic dynamics.</p>
+          <p>He went on to work with the United States Agency for International Development, seconded to both SAFER and the Zimbabwe AIDS Network, and later spent several years with the World Health Organisation and the United Nations, working in Zambia, Ethiopia, Kenya, the USA and the UK.</p>
+          <p>A qualified medical doctor, he brings years of senior management experience in the third sector. When Richard invited him to join Sanitopia he accepted without hesitation, and his experience across the African continent shapes how the organisation plans and delivers its work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="director fade-up">
+      <div class="portrait">
+        <img src="assets/team/chris-dokosi.jpg" alt="Dr Chris Dokosi, Director of Sanitopia" loading="lazy" />
+      </div>
+      <div>
+        <div class="name">Dr Chris Dokosi</div>
+        <div class="role">International Business &amp; Technology</div>
+        <div class="bio">
+          <p>Dr Chris Dokosi is an international consultant with over 25 years of experience advising across international investment, business development, institutional data governance, information technology and cybersecurity.</p>
+          <p>He has consulted across defence, banking and finance, asset management, insurance, oil and gas, telecommunications and the public sector, supporting institutions including the Home Office, HM Revenue &amp; Customs and local government bodies. As CEO of OS-L Ltd for over a decade he has built international partnerships, and in July 2023 he received the African Achievers Award for Excellence in Business Development.</p>
+          <p>He is founder of the Chris-Dokosi Foundation, a non-profit dedicated to community development and empowerment across West, Central and East Africa, and an advocate for inclusive, environmentally responsible development.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="director fade-up">
+      <div class="portrait">
+        <img src="assets/team/gurpreet-gill.jpg" alt="Mr Gurpreet Gill, Director of Sanitopia" loading="lazy" />
+      </div>
+      <div>
+        <div class="name">Mr Gurpreet Gill</div>
+        <div class="role">Business Leadership &amp; People Development</div>
+        <div class="bio">
+          <p>Gurpreet Gill is a business leader with a focus on developing people, building resilient teams and scaling high-performing organisations. He has served as a director at multiple organisations across IT, marketing, accounting, medical and third sector.</p>
+          <p>Whether leading operational transformations, mentoring emerging leaders or launching growth initiatives, he is known for turning complexity into clarity and delivering results that last. He is an advocate for innovation and continuous improvement, exploring how emerging technologies can build more agile and human-centric businesses.</p>
+          <p>Outside work he enjoys reading, running and following developments in technology. A quote he often shares with his mentees captures his philosophy: "Don't be so attached to who you are in the present, that you don't give the future version of yourself a chance."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="director fade-up">
+      <div class="portrait monogram" aria-hidden="true">NY</div>
+      <div>
+        <div class="name">Nana Yaa Owusu-Aduome</div>
+        <div class="role">Legal &amp; Governance</div>
+        <div class="bio">
+          <p>Nana Yaa Owusu-Aduome is a legal and corporate professional with over 13 years of experience in corporate and legal practice, with a background in administration, supervision and management.</p>
+          <p>She serves as Country Director and Legal Advisor for DEBCEE J Foundation, a non-profit registered in Belgium and Ghana which runs projects in healthcare and education and supports underprivileged groups, senior citizens and persons with disabilities. In 2024 the foundation launched The African Festival Belgium.</p>
+          <p>She has held roles as Senior Partner at Shield &amp; Case Law Firm and Head of Legal at Ghana Cylinder Manufacturing Company Limited, and is a member of the Ghana Bar Association. She holds an Executive MBA in Finance, an LLB, a BA in Psychology and the Barrister of Laws certificate from the Ghana School of Law, and is the author of the novel <em>Against Silences to Come</em>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================ CONTACT ================ -->
+<section class="cta-strip" style="background: var(--accent)">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-up">
+        <span class="eyebrow" style="color: var(--paper)">Work with the board</span>
+        <h2 style="margin-top: 1rem; color: white">Talk to us about partnering in Ghana.</h2>
+        <p style="color: white">Our directors are directly involved in how projects are scoped, funded and delivered. If you are considering working with Sanitopia, speak to us.</p>
+      </div>
+      <div class="cta-actions fade-up" style="transition-delay: 0.1s">
+        <a href="partner-ghana" class="btn btn-primary" style="background: white; color: var(--accent)">Partner in Ghana</a>
+        <a href="contact" class="btn btn-secondary" style="border-color: white; color: white">Get in touch</a>
+      </div>
     </div>
   </div>
 </section>

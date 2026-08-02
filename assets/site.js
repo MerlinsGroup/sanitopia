@@ -9,12 +9,22 @@
   // Each nav item declares its match — used for active-state highlighting.
   // `match` is an array of pathname tail strings; first one is the canonical href.
   const NAV = [
-    { href: "projects", label: "Our Work" },
-    { href: "impact",  label: "Impact" },
+    { label: "About", children: [
+      { href: "about",    label: "About Sanitopia" },
+      { href: "founder",  label: "Learn About Richard" },
+      { href: "team",     label: "Our Team" },
+      { href: "purpose",  label: "Our Purpose" },
+      { href: "impact",   label: "Our Impact" },
+      { href: "values",   label: "Our Values" },
+      { href: "book",     label: "Crushed But Not Destroyed" },
+    ] },
+    { label: "Our Projects", children: [
+      { href: "projects", label: "All Projects" },
+      { href: "nkonya",   label: "Nkonya SHS" },
+    ] },
+    { href: "gallery", label: "Gallery" },
+    { href: "news",    label: "News" },
     { href: "partner-ghana", label: "Partner in Ghana" },
-    { href: "founder", label: "Richard's Story" },
-    { href: "team",    label: "Team" },
-    { href: "news",    label: "Updates" },
   ];
 
   const SOCIALS = {
@@ -64,8 +74,8 @@
         </a>
         <nav><ul class="nav-links">${linksHTML}</ul></nav>
         <div style="display: flex; gap: 1rem; align-items: center;">
-          <a href="partner-ghana" class="btn-ghost" style="text-decoration: none; color: var(--ink); padding: 0.5rem 1rem;">Partner With Us</a>
-          <a href="contact" class="btn-donate">Contact</a>
+          <a href="contact" class="btn-ghost" style="text-decoration: none; color: var(--ink); padding: 0.5rem 1rem;">Contact</a>
+          <a href="donate" class="btn-donate">Donate</a>
         </div>
         <button class="menu-toggle" aria-label="Open menu"><span></span></button>
       </div>`;
@@ -89,8 +99,8 @@
     }).join("");
     return `
       ${groups}
-      <a href="partner-ghana" class="donate-mobile" style="background: var(--paper); color: var(--ink); margin-bottom: 1rem;">Partner With Us →</a>
-      <a href="contact" class="donate-mobile">Contact →</a>`;
+      <a href="contact" class="donate-mobile" style="background: var(--paper); color: var(--ink); margin-bottom: 1rem;">Contact →</a>
+      <a href="donate" class="donate-mobile">Donate →</a>`;
   }
 
   function footerHTML() {
@@ -101,35 +111,37 @@
             <a href="/" class="brand" style="color: var(--paper)">
               <img class="brand-logo" src="${LOGO}" alt="Sanitopia" />
             </a>
-            <p>A Community Interest Company building safe, dignified sanitation across Africa. Our mission: 10,000 projects by 2035.</p>
+            <p>A Community Interest Company building safe, dignified sanitation across Africa. Our mission: 20,000 modern sanitation facilities across the continent.</p>
           </div>
           <div>
-            <h4>Quick Links</h4>
+            <h4>About</h4>
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="projects">Our Work</a></li>
-              <li><a href="impact">Impact</a></li>
-              <li><a href="partner-ghana">Partner in Ghana</a></li>
-              <li><a href="founder">Richard's Story</a></li>
-              <li><a href="team">Team</a></li>
-              <li><a href="news">Updates</a></li>
+              <li><a href="about">About Sanitopia</a></li>
+              <li><a href="founder">Learn About Richard</a></li>
+              <li><a href="team">Our Team</a></li>
+              <li><a href="purpose">Our Purpose</a></li>
+              <li><a href="impact">Our Impact</a></li>
+              <li><a href="values">Our Values</a></li>
             </ul>
           </div>
           <div>
-            <h4>Get Involved</h4>
+            <h4>Our Work</h4>
             <ul>
-              <li><a href="partner-ghana">Partner With Us</a></li>
-              <li><a href="book">Get the Book</a></li>
-              <li><a href="contact">Contact Us</a></li>
-              <li><a href="nkonya">Nkonya Pilot</a></li>
+              <li><a href="projects">Our Projects</a></li>
+              <li><a href="nkonya">Nkonya SHS</a></li>
               <li><a href="gallery">Gallery</a></li>
+              <li><a href="news">News</a></li>
+              <li><a href="donate">Donate</a></li>
+              <li><a href="partner-ghana">Partner With Us</a></li>
+              <li><a href="book">Crushed But Not Destroyed</a></li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
               <li><a href="mailto:info@sanitopiaprojects.org">info@sanitopiaprojects.org</a></li>
-              <li><a href="tel:+443302320143">+44 330 232 0143</a></li>
+              <li><a href="tel:+447386454673">+44 7386 454673</a></li>
             </ul>
             <h4 style="margin-top: 2rem">Follow</h4>
             <div class="footer-socials">
@@ -141,7 +153,7 @@
           </div>
         </div>
         <div class="footer-bar">
-          <div>© 2025 Sanitopia. All rights reserved.</div>
+          <div>© 2026 Sanitopia. All rights reserved.</div>
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
             <a href="privacy">Privacy</a>
             <a href="terms">Terms</a>
